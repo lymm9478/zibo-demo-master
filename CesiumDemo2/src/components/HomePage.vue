@@ -33,7 +33,7 @@
           <!-- Middle top content goes here -->
           <LMInfo />
         </div>
-        <!-- 下侧信息 -->
+        <!-- 下侧1信息 -->
         <div id="left-section-bottom" style="background-color: yellow; flex: 1;">
           <LBInfo />
         </div>
@@ -52,7 +52,7 @@
         <div id="middle-section-bottom" style="background-color: lightblue;height: 30% ">
           <!-- Lower content goes here -->
           <p>Lower Section</p>
-          <OutInfo />
+
         </div>
       </div>
 
@@ -85,7 +85,7 @@ import LBInfo from './LBInfo'
 import RBInfo from './RBInfo'
 import RMInfo from './RMInfo'
 import LMInfo from './LMInfo'
-import OutInfo from './OutInfo'
+
 // import Login  from '@/module/Class_Login.js'
 import {ref, onMounted} from 'vue'
 // import router from '../router/index.js'
