@@ -7,14 +7,14 @@
       <!--        </div>-->
       <div id="time">{{ formattedTime }}</div>
       <div id="updatetime-container">
-        <div id="updatetime">平台数据已更新，更新时间为 12:00</div>
+        <div id="updatetime">平台数据已更{{a}}新，更新时间为 12:00</div>
       </div>
       <div id="setting" title="设置" class="clickable-element"></div>
       <div id="logout" title="退出登录" class="clickable-element">
           <div id="logoutImg"></div>
           <div>退出</div>
       </div>
-      <div id="userinfo" title="退出登录" >
+      <div id="userinfo" title="用户信息" >
         <div id="userinfoImg"></div>
         <div>用户名</div>
       </div>
@@ -25,16 +25,16 @@
       <!-- 左侧信息 -->
       <div id="left-section" style=" display: flex; flex-direction: column; width: calc(20% - 2px);">
         <!-- 上侧信息 -->
-        <div id="left-section-top" style="background-color: lightgreen; flex: 1;">
+        <div id="left-section-top" style=" flex: 1;">
           <LTInfo />
         </div>
         <!-- 中间信息 -->
-        <div id="left-section-middle-top" style="background-color: darkgreen; flex: 1;">
+        <div id="left-section-middle-top" style=" flex: 1;">
           <!-- Middle top content goes here -->
           <LMInfo />
         </div>
-        <!-- 下侧信息 -->
-        <div id="left-section-bottom" style="background-color: yellow; flex: 1;">
+        <!-- 下侧1信息 -->
+        <div id="left-section-bottom" style="flex: 1;">
           <LBInfo />
         </div>
       </div>
@@ -42,33 +42,32 @@
       <!-- 中侧信息（地图） -->
       <div id="middle-section" style=" display: flex; flex-direction: column; width: calc(20% - 2px);">
         <!-- 上侧信息 -->
-        <div id="middle-section-top" style="background-color: lightcoral; height: 70%">
+        <div id="middle-section-top" style=" height: 70%">
           <!-- Upper content goes here -->
           <p>Upper Section</p>
         </div>
 
 
         <!-- 下侧信息 -->
-        <div id="middle-section-bottom" style="background-color: lightblue;height: 30% ">
+        <div id="middle-section-bottom" style="height: 30% ">
           <!-- Lower content goes here -->
-          <p>Lower Section</p>
-
+         <BMInfo />
         </div>
       </div>
 
       <!-- 右侧信息 -->
       <div id="right-section" style=" display: flex; flex-direction: column; width: calc(20% - 2px);">
         <!-- 上侧信息 -->
-        <div id="right-section-top" style="background-color: lightpink; flex: 1;">
+        <div id="right-section-top" style=" flex: 1;">
           <RTInfo />
         </div>
         <!-- 中间信息 -->
-        <div id="right-section-middle-top" style="background-color: brown; flex: 1;">
+        <div id="right-section-middle-top" style=" flex: 1;">
           <!-- Middle top content goes here -->
           <RMInfo />
         </div>
         <!-- 下侧信息 -->
-        <div id="right-section-bottom" style="background-color: darkblue; flex: 1;">
+        <div id="right-section-bottom" style=" flex: 1;">
           <RBInfo />
         </div>
       </div>
@@ -85,6 +84,8 @@ import LBInfo from './LBInfo'
 import RBInfo from './RBInfo'
 import RMInfo from './RMInfo'
 import LMInfo from './LMInfo'
+import BMInfo from './BMInfo'
+import {a} from './js/Config'
 
 // import Login  from '@/module/Class_Login.js'
 import {ref, onMounted} from 'vue'
@@ -93,6 +94,8 @@ const formattedTime = ref(getCurrentTime());
 
 
 function getCurrentTime() {
+  a.value =false
+  console.log(a.value)
   const date = new Date();
   const year = date.getFullYear();
   const month = addZero(date.getMonth() + 1);
@@ -280,7 +283,7 @@ body {
   width: 100%;
   position: relative; /* Add position relative */
   z-index: 1; /* Ensure content stays above the background */
-  opacity: 0.3;
+
 }
 
 #left-section,
@@ -289,11 +292,11 @@ body {
   height: 100%;
   display: flex;
   flex-direction: column;
-  background: rgba(255, 255, 255, 0.5); /* 50% transparent white background */
+
 }
 
 #left-section {
-  background-color: green;
+
   width: 25%;
 }
 
@@ -303,14 +306,14 @@ body {
 }
 
 #middle-section {
-  background-color: purple;
+
   flex: 1;
   display: flex;
   flex-direction: column;
 }
 
 #middle-section-top {
-  background-color: lightcoral;
+
   flex: 80%;
   display: flex;
   justify-content: center;
@@ -318,7 +321,7 @@ body {
 }
 
 #middle-section-bottom {
-  background-color: lightblue;
+
   flex: 20%;
   display: flex;
   justify-content: center;
@@ -326,7 +329,7 @@ body {
 }
 
 #right-section {
-  background-color: blue;
+
   width: 25%;
 }
 
