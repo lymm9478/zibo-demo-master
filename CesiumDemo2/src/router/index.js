@@ -5,6 +5,7 @@ import HomePage from '../components/HomePage.vue'
 import LogIn from '../components/LogIn'
 import Login from  '@/module/Class_Login'
 
+import BackStageManager from '../components/DataBase/BackStageManager.vue'
 const router = createRouter({
     history: createWebHistory(),
   routes: [
@@ -17,6 +18,13 @@ const router = createRouter({
         path:'/',
         name:'home',
         component:HomePage,
+
+    },
+    {
+        //后台管理首页
+        path:'/bg',
+        name:'backstage',
+        component:BackStageManager
 
     }
 
