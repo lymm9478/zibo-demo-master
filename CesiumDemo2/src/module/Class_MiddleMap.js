@@ -1,6 +1,7 @@
 import Config from '@/module/Class_Config'
 import ZiboJsondata from "@/assets/ZiBo.json";
 import ZiboLabledata from "@/assets/ZiBoLable.json";
+import humitureDirection from "@/assets/humitureDirection.json";
 export default{}
 let isDEM = true
 export function loadBeseMap(){
@@ -47,7 +48,7 @@ export function loadBeseMap(){
               }))
             EntityPoint.label={
                 text: pointLabel.name, // 文字内容
-                font: '12px sans-serif', // 字体样式
+                font: '16px sans-serif', // 字体样式
                 style: Cesium.LabelStyle.FILL, // 标签样式
                 // outlineWidth: 2, // 描边宽度
                 verticalOrigin: Cesium.VerticalOrigin.CENTER, // 文字相对于标注的位置
@@ -82,4 +83,15 @@ export function DEMSwitch(){
         Config.Viewer.imageryLayers.removeAll(true); //删除所有底图 
         Config.Viewer.scene.globe.baseColor = Cesium.Color.fromCssColorString("#000000");
     }
+}
+
+// 根据传入的id数组移除全部entities
+export function removeEntityByIDArray(IDOfEntityArray) {
+    IDOfEntityArray.forEach((id) => {
+        Config.Viewer.entities.removeById(id)
+    })
+}
+// humitureDirection
+export function addhumitureDirection(){
+    console.log(humitureDirection);
 }

@@ -92,6 +92,7 @@ import MapContainer from './MapContainer.vue'
 import {
   loadBeseMap,
   // DEMSwitch
+  addhumitureDirection
 } from '@/module/Class_MiddleMap'
 import {a} from './js/Config'
 
@@ -168,6 +169,7 @@ function main(){
   //   router.push('/login')
   // }
   loadBeseMap()
+  addhumitureDirection()
 }
 main()
 
