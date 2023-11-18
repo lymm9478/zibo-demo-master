@@ -1,9 +1,10 @@
 <template>
-  <div id="cesiumContainer"></div>
+  <div id="cesiumContainer" style="width: 60%;height:80% ;opacity: 1"></div>
 </template>
 <script setup>
 import {onMounted} from "vue";
 import Config from "@/module/Class_Config";
+import { InitialCameraLocation } from "@/module/Class_MiddleMap";
 // import {selectedEntityTree} from "@/module/Class_Listening";
 
 onMounted(() => {
@@ -23,7 +24,7 @@ onMounted(() => {
     imageryProvider: new Cesium.UrlTemplateImageryProvider({
       // url: "http://t0.tianditu.gov.cn/img_w/wmts?tilematrix={z}&layer=img&style=default&tilerow={y}&tilecol={x}&tilematrixset=w&format=tiles&service=WMTS&version=1.0.0&request=GetTile&tk=a7abea90bca2f9e5a02a6fbf1adc8553",
       // url: "http://192.168.0.14/MapTile/ESRI/{z}/{y}/{x}.png",
-      url: "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
+      url: Config.baseMapUrl,
       maximumLevel: 16
     }),
     clock: new Cesium.Clock({
@@ -42,14 +43,9 @@ onMounted(() => {
       },
     }
   });
-  viewer.camera.setView({
-    destination: Cesium.Cartesian3.fromDegrees(111.03, 39.05, 32784836),
-    orientation: {
-      heading: Cesium.Math.toRadians(0),
-      pitch: Cesium.Math.toRadians(-90),
-      roll: Cesium.Math.toRadians(0),
-    },
-  });
+
+  // viewer.imageryLayers.removeAll(true); //删除所有底图 
+  // viewer.scene.globe.baseColor = Cesium.Color.fromCssColorString("#000000");
   viewer._cesiumWidget._creditContainer.style.display = "none";
   viewer.scene.skyBox.show = false;
   viewer.scene.backgroundColor = new Cesium.Color(0.0, 0.0, 0.0, 0.0);
@@ -66,6 +62,7 @@ onMounted(() => {
   viewer.scene.globe.translucency.frontFaceAlphaByDistance = new Cesium.NearFarScalar(400.0, 1.0, 80000, 0.0);
   
   Config.Viewer = viewer;
+  InitialCameraLocation()
 })
 
 </script>

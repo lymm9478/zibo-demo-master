@@ -44,7 +44,9 @@
         <!-- 上侧信息 -->
         <div id="middle-section-top" style=" height: 70%">
           <!-- Upper content goes here -->
-          <p>Upper Section</p>
+          <!-- <p>Upper Section</p> -->
+          <MapContainer/>
+          <!-- <a-button @click="DEMSwitch">asd</a-button> -->
         </div>
 
 
@@ -64,6 +66,7 @@
         <!-- 中间信息 -->
         <div id="right-section-middle-top" style=" flex: 1;">
           <!-- Middle top content goes here -->
+   
           <RMInfo />
         </div>
         <!-- 下侧信息 -->
@@ -85,6 +88,11 @@ import RBInfo from './RBInfo'
 import RMInfo from './RMInfo'
 import LMInfo from './LMInfo'
 import BMInfo from './BMInfo'
+import MapContainer from './MapContainer.vue'
+import {
+  loadBeseMap,
+  // DEMSwitch
+} from '@/module/Class_MiddleMap'
 import {a} from './js/Config'
 
 // import Login  from '@/module/Class_Login.js'
@@ -95,7 +103,7 @@ const formattedTime = ref(getCurrentTime());
 
 function getCurrentTime() {
   a.value =false
-  console.log(a.value)
+  // console.log(a.value)
   const date = new Date();
   const year = date.getFullYear();
   const month = addZero(date.getMonth() + 1);
@@ -159,6 +167,7 @@ function main(){
   //   // console.log('13')
   //   router.push('/login')
   // }
+  loadBeseMap()
 }
 main()
 
