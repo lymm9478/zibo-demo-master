@@ -26,10 +26,11 @@ app.use(ConfigProvider)
 app.use(Antd)
 
 import * as Icons from '@ant-design/icons-vue'
-//å…¨å±€æ³¨å†Œå›¾æ ‡
+//È«¾Ö×¢²áÍ¼±ê
 const icons = Icons
 for (const i in icons) {
   app.component(i, icons[i])
 }
+
 
 app.mount('#app')

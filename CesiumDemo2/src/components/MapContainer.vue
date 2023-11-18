@@ -1,10 +1,9 @@
 <template>
-  <div id="cesiumContainer" style="width: 60%;height:80% ;opacity: 1"></div>
+  <div id="cesiumContainer"></div>
 </template>
 <script setup>
 import {onMounted} from "vue";
 import Config from "@/module/Class_Config";
-import { InitialCameraLocation } from "@/module/Class_MiddleMap";
 // import {selectedEntityTree} from "@/module/Class_Listening";
 
 onMounted(() => {
@@ -44,7 +43,7 @@ onMounted(() => {
     }
   });
 
-  // viewer.imageryLayers.removeAll(true); //åˆ é™¤æ‰€æœ‰åº•å›¾ 
+  // viewer.imageryLayers.removeAll(true); //É¾³ýËùÓÐµ×Í¼ 
   // viewer.scene.globe.baseColor = Cesium.Color.fromCssColorString("#000000");
   viewer._cesiumWidget._creditContainer.style.display = "none";
   viewer.scene.skyBox.show = false;

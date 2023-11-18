@@ -44,9 +44,7 @@
         <!-- 上侧信息 -->
         <div id="middle-section-top" style=" height: 70%">
           <!-- Upper content goes here -->
-          <!-- <p>Upper Section</p> -->
-          <MapContainer/>
-          <!-- <a-button @click="DEMSwitch">asd</a-button> -->
+          <p>Upper Section</p>
         </div>
 
 
@@ -60,17 +58,16 @@
       <!-- 右侧信息 -->
       <div id="right-section" style=" display: flex; flex-direction: column; width: calc(20% - 2px);">
         <!-- 上侧信息 -->
-        <div id="right-section-top" style=" flex: 1;">
+        <div id="right-section-top" style=" height: 50%">
           <RTInfo />
         </div>
         <!-- 中间信息 -->
-        <div id="right-section-middle-top" style=" flex: 1;">
+        <div id="right-section-middle-top" style=" height: 30%">
           <!-- Middle top content goes here -->
-   
           <RMInfo />
         </div>
         <!-- 下侧信息 -->
-        <div id="right-section-bottom" style=" flex: 1;">
+        <div id="right-section-bottom" style=" height: 20%">
           <RBInfo />
         </div>
       </div>
@@ -88,12 +85,6 @@ import RBInfo from './RBInfo'
 import RMInfo from './RMInfo'
 import LMInfo from './LMInfo'
 import BMInfo from './BMInfo'
-import MapContainer from './MapContainer.vue'
-import {
-  loadBeseMap,
-  // DEMSwitch
-  addhumitureDirection
-} from '@/module/Class_MiddleMap'
 import {a} from './js/Config'
 
 // import Login  from '@/module/Class_Login.js'
@@ -104,7 +95,7 @@ const formattedTime = ref(getCurrentTime());
 
 function getCurrentTime() {
   a.value =false
-  // console.log(a.value)
+  console.log(a.value)
   const date = new Date();
   const year = date.getFullYear();
   const month = addZero(date.getMonth() + 1);
@@ -168,8 +159,6 @@ function main(){
   //   // console.log('13')
   //   router.push('/login')
   // }
-  loadBeseMap()
-  addhumitureDirection()
 }
 main()
 
@@ -303,6 +292,7 @@ body {
   height: 100%;
   display: flex;
   flex-direction: column;
+  position:relative
 
 }
 
@@ -347,6 +337,7 @@ body {
 #right-section-top,
 #right-section-bottom {
   flex: 1;
+  position:relative
 }
 
 /* Add a new div for the background image */
