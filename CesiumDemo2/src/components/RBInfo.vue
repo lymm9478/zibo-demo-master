@@ -26,8 +26,8 @@
 
 #overlay-text {
   position: absolute;
-  top: 13%;
-  left: 35%;
+  top: 15%;
+  left: 32%;
   transform: translate(-50%, -50%);
   font-family: '黑体', sans-serif;
   font-weight: bold;
