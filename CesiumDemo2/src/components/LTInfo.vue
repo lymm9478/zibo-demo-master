@@ -74,53 +74,88 @@ onMounted (()=>{
   // testdata=AnalysisJson.getData();
   //console.log(testdata);
   option = {
-    title: {
-      text: '站点运行情况',
-      left: 'center',
-      textStyle: {
-        color: 'white' // 设置标题颜色
-      }
-    },
     tooltip: {
-      trigger: 'item'
-    },
-    legend: {
-      orient: 'vertical',
-      left: 'right',
-      textStyle: {
-        color: 'white' // 设置图例文字颜色
-      }
+      trigger: 'item',
+      formatter: '{b}: {d}%',
     },
     series: [
       {
-        name: '设备数量',
         type: 'pie',
-        radius: '68%',
+        startAngle: 90,
+        radius: ['70%', '85%'], // 最外环 位移监测设备
+        avoidLabelOverlap: false,
         label: {
-          // 设置标签样式
-          textStyle: {
-            color: 'white', // 设置标签文字颜色
-            fontSize: 12     // 设置标签文字大小
-          }
-        },
-        emphasis: {
-          itemStyle: {
-            shadowBlur: 10,
-            shadowOffsetX: 0,
-            shadowColor: 'rgba(234,41,41,0.5)'
-          },
-          label: {
-            textStyle: {
-              color: 'yellow' // 设置标签文字颜色（鼠标悬停时）
-            }
-          }
+          show: false,
         },
         data: [
-          { value: 1048, name: '在线设备' },
-          { value: 300, name: '离线设备' }
-        ]
-      }
-    ]
+          {
+            value: 95,
+            name: '位移监测设备在线率', // A 设备的名称
+            itemStyle: {
+              color: '#1E90FF',
+            },
+          },
+          { value: 5, itemStyle: { color: 'transparent' } }, // 补白
+        ],
+      },
+      {
+        type: 'pie',
+        startAngle: 90,
+        radius: ['50%', '65%'], // 降雨量监测设备
+        avoidLabelOverlap: false,
+        label: {
+          show: false,
+        },
+        data: [
+          {
+            value: 90,
+            name: '降雨量监测设备在线率', // B 设备的名称
+            itemStyle: {
+              color: '#00BFFF',
+            },
+          },
+          { value: 10, itemStyle: { color: 'transparent' } }, // 补白
+        ],
+      },
+      {
+        type: 'pie',
+        startAngle: 90,
+        radius: ['30%', '45%'], // 温湿度监测设备
+        avoidLabelOverlap: false,
+        label: {
+          show: false,
+        },
+        data: [
+          {
+            value: 85,
+            name: '温湿度监测设备在线率', // C 设备的名称
+            itemStyle: {
+              color: '#87CEEB',
+            },
+          },
+          { value: 15, itemStyle: { color: 'transparent' } }, // 补白
+        ],
+      },
+      {
+        type: 'pie',
+        startAngle: 90,
+        radius: ['10%', '25%'], // 风向监测设备
+        avoidLabelOverlap: false,
+        label: {
+          show: false,
+        },
+        data: [
+          {
+            value: 60,
+            name: '风向监测设备在线率', // D 设备的名称
+            itemStyle: {
+              color: '#B0E0E6',
+            },
+          },
+          { value: 40, itemStyle: { color: 'transparent' } }, // 补白
+        ],
+      },
+    ],
   };
 
   option && myChart.setOption(option);
@@ -144,7 +179,8 @@ onMounted (()=>{
   font-size:18px;
 }
 .PointInfo-1{
-
+  overflow: hidden; /* 隐藏溢出部分 */
+  transition: transform 0.5s ease; /* 添加移动动画 */
   display: flex;
   width: 100%;
   height: 35%;

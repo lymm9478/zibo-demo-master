@@ -60,17 +60,17 @@
       <!-- 右侧信息 -->
       <div id="right-section" style=" display: flex; flex-direction: column; width: calc(20% - 2px);">
         <!-- 上侧信息 -->
-        <div id="right-section-top" style=" flex: 1;">
+        <div id="right-section-top" style=" height: 50%">
           <RTInfo />
         </div>
         <!-- 中间信息 -->
-        <div id="right-section-middle-top" style=" flex: 1;">
+        <div id="right-section-middle-top" style=" height: 30%">
           <!-- Middle top content goes here -->
    
           <RMInfo />
         </div>
         <!-- 下侧信息 -->
-        <div id="right-section-bottom" style=" flex: 1;">
+        <div id="right-section-bottom" style=" height: 20%">
           <RBInfo />
         </div>
       </div>
@@ -92,6 +92,10 @@ import MapContainer from './MapContainer.vue'
 import {
   loadBeseMap,
   // DEMSwitch
+  // addhumitureDirection,
+  // addMoveDirection,
+  // addrainfallDirection,
+  // addWindDirection
 } from '@/module/Class_MiddleMap'
 import {a} from './js/Config'
 
@@ -168,12 +172,12 @@ function main(){
   //   router.push('/login')
   // }
   loadBeseMap()
+  // addhumitureDirection()
+  // addMoveDirection()
+  // addrainfallDirection()
+  // addWindDirection()
 }
 main()
-
-
-
-
 </script>
 
 <style scoped>
@@ -301,7 +305,7 @@ body {
   height: 100%;
   display: flex;
   flex-direction: column;
-
+  position:relative
 }
 
 #left-section {
@@ -312,6 +316,7 @@ body {
 #left-section-top,
 #left-section-bottom {
   flex: 1;
+
 }
 
 #middle-section {
@@ -345,6 +350,7 @@ body {
 #right-section-top,
 #right-section-bottom {
   flex: 1;
+  position:relative
 }
 
 /* Add a new div for the background image */

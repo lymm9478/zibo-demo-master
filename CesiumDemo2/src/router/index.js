@@ -27,7 +27,7 @@ const router = createRouter({
 
     },
     {
-        //鍚庡彴绠＄悊棣栭〉
+        //后台管理首页
         path:'/bg',
         name:'backstage',
         component:BackStageManager,

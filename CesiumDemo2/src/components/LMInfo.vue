@@ -39,37 +39,87 @@ onMounted(()=>{
       }
     },
     yAxis: {
-      type: 'value'
+      splitLine: {
+        show: false // 隐藏网格线
+      },
+      type: 'value',
+      name: "(台) ",
+      nameTextStyle: {
+        color: "#fff",
+        fontFamily: "FZLTHK--GBK1-0",
+        fontSize: "14",
+        offset: 0, // 控制名称与轴的间距，正数向右偏移，负数向左偏移
+      },
+      axisLabel: {
+        color: 'white', // 设置刻度标签颜色
+        fontSize: 12
+      }
     },
     series: [
       {
-        data: [120, 130, 150, 80, 70, 110, 130],
-        type: 'bar',
-        itemStyle: {
-          color: new echarts.graphic.LinearGradient(0, 1, 0, 0, [
-            {
-              offset: 0,
-              color: '#11d56d'
-            },
-            {
-              offset: 1,
-              color: '#83bff6'
-            }
-          ])
+        data: [120, 130, 150, 80, 70, 110],
+        type:'pictorialBar',
+        symbolPosition:'start',
+        symbol:'diamond',
+        symbolOffset:[0,'50%'],
+        symbolSize:[30,15],
+        itemStyle:{
+          color:'#02D7EA'
         },
-        label: {
-          show: true, // 启用标签显示
-          position: 'top', // 也可以设置为 'inside' 或其他位置
-          color: 'white', // 标签文字颜色
-          fontSize: 12     // 标签文字大小
+        zlevel:3
+      },
+      {
+        data: [120, 130, 150, 80, 70, 110],
+        type:'bar',
+        barWidth:30,
+        itemStyle:{
+          color:{
+            type:'linear',
+            x:0,
+            y:0,
+            x2:0,
+            y2:1,
+            global:false,
+            colorStops:[
+              {offset:0,color:'#057DFE'},
+              {offset:1,color:'#02D7EA'}
+            ]
+          },
+          zlevel:2
         },
-        emphasis: {
-          focus: 'series'
+        label:{
+          show:true,
+          position:'top',
+          distance:15,
+          color:'white'
         }
+      },
+      {
+        data: [120, 130, 150, 80, 70, 110],
+        type:'pictorialBar',
+        symbolPosition:'end',
+        symbol:'diamond',
+        symbolOffset:[0,'-50%'],
+        symbolSize:[30,15],
+        itemStyle:{
+          color:{
+            type:'linear',
+            x:0,
+            y:0,
+            x2:0,
+            y2:1,
+            global:false,
+            colorStops:[
+              {offset:0,color:'#057DFE'},
+              {offset:1,color:'#02D7EA'}
+            ]
+          }
+        },
+        zlevel:1
       }
     ],
     tooltip: {
-      trigger: 'axis', // 设置触发类型为坐标轴
+      trigger: 'item', // 设置触发类型为坐标轴
       axisPointer: {
         type: 'shadow' // 设置坐标轴指示器类型为阴影
       }

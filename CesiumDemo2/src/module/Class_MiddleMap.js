@@ -1,6 +1,10 @@
 import Config from '@/module/Class_Config'
 import ZiboJsondata from "@/assets/ZiBo.json";
 import ZiboLabledata from "@/assets/ZiBoLable.json";
+import humitureDirection from "@/assets/humitureDirection.json";
+import MoveDirection from "@/assets/MoveDirection.json";
+import rainfallDirection from "@/assets/rainfallDirection.json";
+import WindDirection from "@/assets/WindDirection.json";
 export default{}
 let isDEM = true
 export function loadBeseMap(){
@@ -35,7 +39,7 @@ export function loadBeseMap(){
     ZiBoLableDataSource.load(ZiboLabledata).then((Lable)=>{
         // console.log(Lable);
         Lable.entities.values.forEach((pointLabel) => {
-            console.log(pointLabel);
+            // console.log(pointLabel);
             var EntityPoint = Config.Viewer.entities.add(
                 new Cesium.Entity({
                 position: pointLabel.position.getValue(Cesium.JulianDate.now()),
@@ -47,7 +51,7 @@ export function loadBeseMap(){
               }))
             EntityPoint.label={
                 text: pointLabel.name, // 文字内容
-                font: '12px sans-serif', // 字体样式
+                font: '16px sans-serif', // 字体样式
                 style: Cesium.LabelStyle.FILL, // 标签样式
                 // outlineWidth: 2, // 描边宽度
                 verticalOrigin: Cesium.VerticalOrigin.CENTER, // 文字相对于标注的位置
@@ -82,4 +86,87 @@ export function DEMSwitch(){
         Config.Viewer.imageryLayers.removeAll(true); //删除所有底图 
         Config.Viewer.scene.globe.baseColor = Cesium.Color.fromCssColorString("#000000");
     }
+}
+
+// 根据传入的id数组移除全部entities
+export function removeEntityByIDArray(IDOfEntityArray) {
+    IDOfEntityArray.forEach((id) => {
+        Config.Viewer.entities.removeById(id)
+    })
+}
+// humitureDirection
+export function addhumitureDirection(){
+    let PointIdArrary = []
+    new Cesium.GeoJsonDataSource().load(humitureDirection).then((dataSource)=>{
+        dataSource.entities.values.forEach((points)=>{
+            // console.log(points.position.getValue(Cesium.JulianDate.now()));
+            PointIdArrary.push(Config.Viewer.entities.add(
+                new Cesium.Entity({
+                    position: points.position.getValue(Cesium.JulianDate.now()),
+                    billboard:{
+                        image:'/UI/UI/图标+图标框/humiture.png',
+                        scale:0.2,
+                    }
+                })
+            ).id)
+        })
+        return PointIdArrary
+    })
+}
+
+export function addMoveDirection(){
+    let PointIdArrary = []
+    new Cesium.GeoJsonDataSource().load(MoveDirection).then((dataSource)=>{
+        dataSource.entities.values.forEach((points)=>{
+            // console.log(points.position.getValue(Cesium.JulianDate.now()));
+            PointIdArrary.push(Config.Viewer.entities.add(
+                new Cesium.Entity({
+                    position: points.position.getValue(Cesium.JulianDate.now()),
+                    billboard:{
+                        image:'/UI/UI/图标+图标框/move.png',
+                        scale:0.2,
+                    }
+                })
+            ).id)
+        })
+        return PointIdArrary
+    })
+}
+
+export function addrainfallDirection(){
+    let PointIdArrary = []
+    new Cesium.GeoJsonDataSource().load(rainfallDirection).then((dataSource)=>{
+        dataSource.entities.values.forEach((points)=>{
+            // console.log(points.position.getValue(Cesium.JulianDate.now()));
+            PointIdArrary.push(Config.Viewer.entities.add(
+                new Cesium.Entity({
+                    position: points.position.getValue(Cesium.JulianDate.now()),
+                    billboard:{
+                        image:'/UI/UI/图标+图标框/rainfall.png',
+                        scale:0.2,
+                    }
+                })
+            ).id)
+        })
+        return PointIdArrary
+    })
+}
+
+export function addWindDirection(){
+    let PointIdArrary = []
+    new Cesium.GeoJsonDataSource().load(WindDirection).then((dataSource)=>{
+        dataSource.entities.values.forEach((points)=>{
+            // console.log(points.position.getValue(Cesium.JulianDate.now()));
+            PointIdArrary.push(Config.Viewer.entities.add(
+                new Cesium.Entity({
+                    position: points.position.getValue(Cesium.JulianDate.now()),
+                    billboard:{
+                        image:'/UI/UI/图标+图标框/windDirection.png',
+                        scale:0.2,
+                    }
+                })
+            ).id)
+        })
+        return PointIdArrary
+    })
 }
