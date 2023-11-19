@@ -46,7 +46,7 @@
           <!-- Upper content goes here -->
           <!-- <p>Upper Section</p> -->
           <MapContainer/>
-          <!-- <a-button @click="DEMSwitch">asd</a-button> -->
+          <!-- <a-button @click="getData">asd</a-button> -->
         </div>
 
 
@@ -98,9 +98,11 @@ import {
   // addWindDirection
 } from '@/module/Class_MiddleMap'
 import {a} from './js/Config'
+import {getData} from "@/module/AnalysisJson";
+// import {signalofWyjc_conf} from "@/module/Class_Config.js";
 
 // import Login  from '@/module/Class_Login.js'
-import {ref, onMounted} from 'vue'
+import {ref, onMounted,} from 'vue'
 // import router from '../router/index.js'
 const formattedTime = ref(getCurrentTime());
 
@@ -125,21 +127,22 @@ function addZero(value) {
 // 利用onMounted钩子，确保组件已经挂载后再更新时间
 let addtime = 0;
 onMounted(() => {
+  // AnalysisJson.getData();
   setInterval(() => {
     formattedTime.value = getCurrentTime();
     if(addtime==0){
       getCurrInfo();
-
+      
     }
   }, 1000);
 });
 
-onMounted(() => {
-  setInterval(() => {
-    getCurrInfo();
-
-  }, 60*1000);
-});
+// onMounted(() => {
+//   AnalysisJson.getData();
+//   setInterval(() => {
+//     getCurrInfo();
+//   }, 60*1000);
+// });
 
 
 
@@ -163,8 +166,8 @@ function getCurrInfo() {
   if (updateTimeElement) {
     updateTimeElement.innerHTML = "平台数据已更新，更新时间为 " + h + ":" + new_M;
   }
+  
 }
-
 
 function main(){
   // if (!Login.logined){
@@ -172,6 +175,9 @@ function main(){
   //   router.push('/login')
   // }
   loadBeseMap()
+  getData()
+  // console.log(signalofWyjc_conf.value);
+  // console.log();
   // addhumitureDirection()
   // addMoveDirection()
   // addrainfallDirection()
@@ -179,7 +185,6 @@ function main(){
 }
 main()
 </script>
-
 <style scoped>
 
 

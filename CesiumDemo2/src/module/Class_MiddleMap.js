@@ -15,6 +15,7 @@ export function loadBeseMap(){
     ZiBoAreaDataSource.load(ZiboJsondata).then((Areas)=>{
         // console.log(Areas);
         Areas.entities.values.forEach((prefectureArea) => {
+            // console.log(prefectureArea);
             Config.Viewer.entities.add({
                 polygon: {
                     hierarchy: prefectureArea.polygon._hierarchy._value,

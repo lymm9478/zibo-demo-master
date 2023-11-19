@@ -26,10 +26,21 @@
           <span class="text">四级预警</span>
         </div>
       </div>
-
+      
+      <a-config-provider :theme="waringTable">
+      <!-- <template> -->
+      <div class="waring-table">
+        <a-table class="ant-table-striped" :columns="warningColumns" :data-source="warningData" 
+          :pagination="false" :scroll="{ y:162 }"
+          >
+          <!-- :row-class-name="(_record, index) => (index % 2 === 1 ? 'table-striped' : null)" -->
+        </a-table>
+      </div>
+    </a-config-provider>
+      <!-- </template> -->
       <!-- 下部分，增加了包装表头的 div -->
-      <div class="table-container">
-        <div class="table-header">
+      <!-- <div class="table-container"> -->
+        <!-- <div class="table-header">
           <table>
             <thead>
             <tr class="tr-1">
@@ -37,39 +48,84 @@
             </tr>
             </thead>
           </table>
-        </div>
-        <div class="table-content">
-          <table>
+        </div> -->
+        <!-- <div class="table-content"> -->
+          <!-- <table>
             <tbody>
             <tr v-for="(row, index) in tableData" :key="index">
               <td v-for="(cell, cellIndex) in row" :key="cellIndex">{{ cell }}</td>
             </tr>
             </tbody>
-          </table>
+          </table> -->
         </div>
       </div>
-    </div>
-  </div>
+    <!-- </div> -->
+  <!-- </div> -->
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { watch } from 'vue';
+import {Wyjc_conf,signalofWyjc_conf} from "@/module/Class_Config";
+const waringTable = {
+  components:{
+    Table: {
+      colorBgContainer: "#1D1D1D",
+      // 字体颜色
+      "colorText": "rgba(255,255,255, 0.88)",
+      "colorTextHeading":"rgba(255,255,255, 0.88)",
+      // 边界颜色
+      "colorBorderSecondary":"#1D1D1D",
+      // "borderRadius":1,
+      "lineHeight":1
+      // bodySortBg:'#000000'
+      // background:''
+    }
+  }
+}
+const  warningColumns = [
+  {title:'编号',dataIndex:'id',width: '16%'},
+  {title:'设备类型',dataIndex:'type',width: '28%'},
+  {title:'区市',dataIndex:'prefecture',width: '19%'},
+  {title:'等级',dataIndex:'level',width: '19%'},
+  // {title:'是否通知',dataIndex:'informed',width: '19%'},
+  // {name:'设备编号',dataIndex:'id',key:'id'},
+]
+const warningData = [
+  {id:'1',type:'位移监测',prefecture:'xx县',level:'一级',informed:'是'},
+  {id:'1',type:'位移监测',prefecture:'xx县',level:'一级',informed:'是'},
+  {id:'1',type:'位移监测',prefecture:'xx县',level:'一级',informed:'是'},
+  {id:'1',type:'位移监测',prefecture:'xx县',level:'一级',informed:'是'},
+  {id:'1',type:'位移监测',prefecture:'xx县',level:'一级',informed:'是'},
+  {id:'1',type:'位移监测',prefecture:'xx县',level:'一级',informed:'是'},
+  {id:'1',type:'位移监测',prefecture:'xx县',level:'一级',informed:'是'},
+  {id:'1',type:'位移监测',prefecture:'xx县',level:'一级',informed:'是'},
+  {id:'1',type:'位移监测',prefecture:'xx县',level:'一级',informed:'是'},
+  {id:'1',type:'位移监测',prefecture:'xx县',level:'一级',informed:'是'},
+  {id:'1',type:'位移监测',prefecture:'xx县',level:'一级',informed:'是'},
+  {id:'1',type:'位移监测',prefecture:'xx县',level:'一级',informed:'是'},
+  {id:'1',type:'位移监测',prefecture:'xx县',level:'一级',informed:'是'},
+  {id:'1',type:'位移监测',prefecture:'xx县',level:'一级',informed:'是'},
+]
 
-const tableData = ref([
-  ['#1', '位移监测', 'xx县', '一级', '否'],
-  ['#2', '位移监测', 'xx县', '二级', '否'],
-  ['#3', '位移监测', 'xx县', '一级', '否'],
-  ['#4', '位移监测', 'xx县', '二级', '否'],
-  ['#5', '位移监测', 'xx县', '四级', '否'],
-  ['#5', '位移监测', 'xx县', '四级', '否'],
-  ['#5', '位移监测', 'xx县', '四级', '否'],
-  ['#5', '位移监测', 'xx县', '四级', '否'],
+// const tableData = ref([
+//   ['#1', '位移监测', 'xx县', '一级', '否'],
+//   ['#2', '位移监测', 'xx县', '二级', '否'],
+//   ['#3', '位移监测', 'xx县', '一级', '否'],
+//   ['#4', '位移监测', 'xx县', '二级', '否'],
+//   ['#5', '位移监测', 'xx县', '四级', '否'],
+//   ['#5', '位移监测', 'xx县', '四级', '否'],
+//   ['#5', '位移监测', 'xx县', '四级', '否'],
+//   ['#5', '位移监测', 'xx县', '四级', '否'],
+//   ['#6', '位移监测', 'xx县', '三级', '否']
+// ]);
 
-  ['#6', '位移监测', 'xx县', '三级', '否']
-]);
+// const tableHeader = ref(['设备<br>编号', '设备<br>类型', '所属<br>市区', '预警<br>等级', '是否<br>通知']);
 
-const tableHeader = ref(['设备<br>编号', '设备<br>类型', '所属<br>市区', '预警<br>等级', '是否<br>通知']);
 
+watch (signalofWyjc_conf.value,async(newData)=>{
+  console.log(Wyjc_conf.value);
+  console.log(newData);
+})
 
 </script>
 
@@ -142,7 +198,11 @@ const tableHeader = ref(['设备<br>编号', '设备<br>类型', '所属<br>市�
   display: flex;
   flex-direction: column;
 }
-
+.waring-table{
+  height: 280px;
+  position: relative;
+  top: 4%;
+}
 .table-header {
   flex: 0 0 auto;
   overflow-x: auto;
@@ -172,4 +232,20 @@ th, td {
   background-color: #333;
 }
 
+/* .ant-table-cell */
+/* :deep(.ant-table-thead){
+  background-color: #000000;
+  opacity: 1;
+}
+:deep(.ant-table-thead .ant-table-cell){
+  background-color: #000000;
+  color: #f0f0f0;
+} */
+
+/* [data-doc-theme='light'] .ant-table-striped :deep(.table-striped) td {
+  background-color: #00fafa;
+} */
+:deep(.table-striped) td {
+  background-color: rgb(224, 73, 73);
+}
 </style>

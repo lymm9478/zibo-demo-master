@@ -27,7 +27,7 @@ const router = createRouter({
 
     },
     {
-        //ºóÌ¨¹ÜÀíÊ×Ò³
+        //ï¿½ï¿½Ì¨ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò³
         path:'/bg',
         name:'backstage',
         component:BackStageManager,
@@ -52,7 +52,7 @@ const router = createRouter({
 })
 
 router.beforeEach((to, from, next) => {
-    console.log(Login.logined)
+    // console.log(Login.logined)
     if (!Login.logined && to.path !== "/login") {
         router.push("/login")
     }

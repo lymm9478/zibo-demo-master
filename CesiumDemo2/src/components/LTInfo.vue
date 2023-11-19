@@ -6,22 +6,22 @@
     <div id="LargeK" style="width: 100%;height: 90%">
       <div class="PointInfo-1" >
         <div class="PointPs">
-          <span class="text-1">50</span>
+          <span class="text-1">{{MoveNum}}</span>
           <img class="icon" src="../../public/UI/UI/图标+图标框/图标4.png" alt="Your Icon">
           <span class="text">位移监测</span>
         </div>
         <div class="PointPs">
-          <span class="text-1">50</span>
+          <span class="text-1">{{ humitureNum }}</span>
           <img class="icon" src="../../public/UI/UI/图标+图标框/图标4.png" alt="Your Icon">
           <span class="text">{{ a }}</span>
         </div>
         <div class="PointPs">
-          <span class="text-1">50</span>
+          <span class="text-1">{{MoveNum}}</span>
           <img class="icon" src="../../public/UI/UI/图标+图标框/图标4.png" alt="Your Icon">
           <span class="text">湿度监测</span>
         </div>
         <div class="PointPs">
-          <span class="text-1">50</span>
+          <span class="text-1">{{MoveNum}}</span>
           <img class="icon" src="../../public/UI/UI/图标+图标框/图标4.png" alt="Your Icon">
           <span class="text">风向监测</span>
         </div>
@@ -56,16 +56,17 @@
 </template>
 <script setup>
 import * as echarts from 'echarts';
-import { onMounted} from 'vue'
+import { onMounted,watch} from 'vue'
 import {a} from './js/Config'
+import {ref} from  'vue'
 //
-import AnalysisJson from "@/module/AnalysisJson";
-import Config from "@/module/Class_Config";
-AnalysisJson.getData();
-console.log(Config.Wyjc_conf)
+import {Wyjc_conf,signalofWyjc_conf} from "@/module/Class_Config";
+const MoveNum = ref(0)
+const humitureNum = ref(0)
 
 
 onMounted (()=>{
+  
   
   var chartDom = document.getElementById('main');
   var myChart = echarts.init(chartDom);
@@ -159,7 +160,14 @@ onMounted (()=>{
   };
 
   option && myChart.setOption(option);
+  
+})
 
+watch (signalofWyjc_conf.value,async()=>{
+  MoveNum.value = Wyjc_conf.value.nums
+  humitureNum.value = Wyjc_conf.value.nums
+  // console.log(Wyjc_conf.value);
+  // console.log(newData);
 })
 </script>
 
