@@ -27,73 +27,126 @@
               mode="inline"
               style="height: 100%"
             >
-              <a-sub-menu key="sub1">
-                <template #title>
-                  <span>
-                    <user-outlined />
-                    访问控制
-                  </span>
-                </template>
-                <a-menu-item key="1">人员管理</a-menu-item>
-                <a-menu-item key="2">权限管理</a-menu-item>
-                <a-menu-item key="3">option3</a-menu-item>
-                <a-menu-item key="4">option4</a-menu-item>
-              </a-sub-menu>
-              <a-sub-menu key="sub2">
-                <template #title>
-                  <span>
-                    <laptop-outlined />
-                    权限策略
-                  </span>
-                </template>
-                <a-menu-item key="5">option5</a-menu-item>
-                <a-menu-item key="6">option6</a-menu-item>
-                <a-menu-item key="7">option7</a-menu-item>
-                <a-menu-item key="8">option8</a-menu-item>
-              </a-sub-menu>
-              <a-sub-menu key="sub3">
-                <template #title>
-                  <span>
-                    <notification-outlined />
-                    资源管理
-                  </span>
-                </template>
-                <a-menu-item key="9">操作日志</a-menu-item>
-                <a-menu-item key="10">option10</a-menu-item>
-                <a-menu-item key="11">option11</a-menu-item>
-                <a-menu-item key="12">option12</a-menu-item>
-              </a-sub-menu>
+            <template v-for='(item) in NavDataInfo.NavData' :key="item.Path">
+              <!-- <router-view/> -->
+            <a-sub-menu  ><!---有子项 ：key="item.Path"无任何作用----->
+              <template #title>
+                <a-icon>
+                  <meh-outlined/>
+                </a-icon>
+                <span>{{item.Title}}</span>
+              </template>
+              
+              <a-menu-item v-for="(itChild) in item.Child" :key="itChild.Path">
+                <a-icon>
+                  <meh-outlined/>
+                </a-icon>
+                  <router-link :to="itChild.Path"> <!--根据路径去跳转页面-->
+                 {{itChild.Title}}
+               </router-link>
+                
+               
+              </a-menu-item>
 
-              <a-sub-menu key="sub4">
-                <template #title>
-                  <span>
-                    <notification-outlined />
-                    日志管理
-                  </span>
-                </template>
-                <a-menu-item key="13">option9</a-menu-item>
-                <a-menu-item key="14">option10</a-menu-item>
-                <a-menu-item key="15">option11</a-menu-item>
-                <a-menu-item key="16">option12</a-menu-item>
-              </a-sub-menu>
+            </a-sub-menu>
+   
+   
+
+   
+          </template>
               
             </a-menu>
           </a-layout-sider>
           <a-layout-content :style="{ padding: '0 24px', minHeight: '280px' }">
-            Content
+            
+            <router-view></router-view>
           </a-layout-content>
         </a-layout>
+       
       </a-layout-content>
-      <a-layout-footer style="text-align: center">
+      <!-- <a-layout-footer style="text-align: center">
         Ant Design ©2018 Created by Ant UED
-      </a-layout-footer>
+      </a-layout-footer> -->
+      <!-- <router-view></router-view> -->
     </a-layout>
+    <!-- <div class="content">
+      <router-view />
+    </div> -->
   </template>
   <script setup>
-  import { ref } from 'vue';
+  import { ref,reactive } from 'vue';
   const selectedKeys1 = ref(['2']);
   const selectedKeys2 = ref(['1']);
   const openKeys = ref(['sub1']);
+
+
+  const NavDataInfo = reactive({
+      NavData: [
+        {
+          NavID: '0',
+          Icons: 'home',
+          Title: '权限管理',
+          Path: '/layout',
+          Child: [
+          {
+              NavID: '0-1',
+              Icons: 'man',
+              Title: '人员管理',
+              Path: '/bg/authmg',
+              Child: []
+            },
+          ]
+        },
+        {
+          NavID: '1',
+          Icons: 'meh',
+          Title: '资源管理',
+          Path: '/runtimeData',
+          Child: [
+          {
+              NavID: '1-1',
+              Icons: 'man',
+              Title: '资源管理',
+              Path: '/bg/authmg2',
+              Child: []
+            },
+            {
+              NavID: '1-2',
+              Icons: 'man',
+              Title: '资源组管理',
+              Path: '/dataManage',
+              Child: []
+            },
+
+          ]
+        },
+        {
+          NavID: '2',
+          Icons: 'like',
+          Title: '数据管理',
+          Path: '/dataManage',
+          Child: [
+            {
+              NavID: '2-1',
+              Icons: 'man',
+              Title: '数据总览',
+              Path: '/dataManage',
+              Child: []
+            },
+          ]
+        },
+
+      ],
+    })
+
+
+
+
+
+
+
+
+
   </script>
   <style scoped>
   #components-layout-demo-top-side .logo {

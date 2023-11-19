@@ -1,4 +1,5 @@
 import axios from "axios";
+import Config from "./Class_Config";
 
 
 class Wyjc{
@@ -20,8 +21,8 @@ class YJINFO{//预警信息 ，存储每个区,对应的预警等级
   }
 }
 
- var testdata;
- var wy_decice=new Wyjc();
+
+
 
 
 
@@ -35,10 +36,11 @@ const getData = () => {
     }
  )
     .then((res) => {
-      wy_decice=new Wyjc();//初始化
+      
+      var wy_decice=new Wyjc();
       var YJINFO_City_arr=[];
 
-      console.log(res.data);
+      //console.log(res.data);
       wy_decice.nums=res.data.features.length;//位移设备站点总数
       const nums_area_map=new Map();//每个地区的站点数 map(city,value)
       const nums_warn_map=new Map();//不同等级的预警总数
@@ -150,7 +152,9 @@ const getData = () => {
       wy_decice.nums_warn=nums_warn_map;
       wy_decice.nums_arae_warn=YJINFO_City_arr;
       // console.log(res.data.data);
-      
+      console.log("ok");
+      Config.Wyjc_conf=wy_decice
+      //return wy_decice;
      
     }).catch(error =>{console.log(error)});
 };
@@ -164,5 +168,5 @@ const getData = () => {
 // };
 
   export default {
-    getData,testdata,wy_decice
+    getData,Wyjc
   }

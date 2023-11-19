@@ -6,6 +6,12 @@ import LogIn from '../components/LogIn'
 import Login from  '@/module/Class_Login'
 
 import BackStageManager from '../components/DataBase/BackStageManager.vue'
+//import AuthorityMg from '../components/DataBase/AuthorityMg.vue'
+
+
+//异步
+const AuthorityMg = ()=>import('../components/DataBase/AuthorityMg.vue')
+const AuthorityMg2 = ()=>import('../components/DataBase/AuthorityMg2.vue')
 const router = createRouter({
     history: createWebHistory(),
   routes: [
@@ -24,7 +30,21 @@ const router = createRouter({
         //后台管理首页
         path:'/bg',
         name:'backstage',
-        component:BackStageManager
+        component:BackStageManager,
+        redirect:'/bg/authmg',//默认打开的路由
+        children:[
+            {
+                path:'authmg',
+                name:'authormage',
+                component: AuthorityMg
+            },
+            {
+                path:'authmg2',
+                name:'authormage2',
+                component: AuthorityMg2
+            },
+
+        ]
 
     }
 

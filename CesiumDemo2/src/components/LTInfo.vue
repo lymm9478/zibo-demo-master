@@ -59,14 +59,20 @@ import * as echarts from 'echarts';
 import { onMounted} from 'vue'
 import {a} from './js/Config'
 //
+import AnalysisJson from "@/module/AnalysisJson";
+import Config from "@/module/Class_Config";
+AnalysisJson.getData();
+console.log(Config.Wyjc_conf)
 
 
-onMounted(()=>{
-
+onMounted (()=>{
+  
   var chartDom = document.getElementById('main');
   var myChart = echarts.init(chartDom);
   var option;
-
+  // var testdata= new AnalysisJson.Wyjc();
+  // testdata=AnalysisJson.getData();
+  //console.log(testdata);
   option = {
     title: {
       text: '站点运行情况',
