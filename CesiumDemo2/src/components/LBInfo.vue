@@ -17,7 +17,7 @@
 }
 #overlay-text {
   position: absolute;
-  top: 9%; /* 垂直居中 */
+  top: 10.5%; /* 垂直居中 */
   left: 35%; /* 水平居中 */
   transform: translate(-50%, -50%);
   font-family: '黑体', sans-serif; /* 使用黑体字体 */

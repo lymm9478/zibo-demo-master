@@ -6,22 +6,22 @@
       <!-- 上部分 -->
       <div class="PointInfo-1">
         <div class="PointPs">
-          <span class="text-1">50</span>
+          <span class="text-1">23</span>
           <img class="icon" src="../../public/UI/UI/模块/图标20.png" alt="Your Icon">
           <span class="text">一级预警</span>
         </div>
         <div class="PointPs">
-          <span class="text-1">50</span>
-          <img class="icon" src="../../public/UI/UI/模块/图标20.png" alt="Your Icon">
+          <span class="text-1">5</span>
+          <img class="icon" src="../../public/UI/UI/模块/图标222.png" alt="Your Icon">
           <span class="text">二级预警</span>
         </div>
         <div class="PointPs">
-          <span class="text-1">50</span>
+          <span class="text-1">0</span>
           <img class="icon" src="../../public/UI/UI/模块/图标22.png" alt="Your Icon">
           <span class="text">三级预警</span>
         </div>
         <div class="PointPs">
-          <span class="text-1">50</span>
+          <span class="text-1">1</span>
           <img class="icon" src="../../public/UI/UI/模块/图标21.png" alt="Your Icon">
           <span class="text">四级预警</span>
         </div>
@@ -120,6 +120,17 @@ const warningData = [
 // ]);
 
 // const tableHeader = ref(['设备<br>编号', '设备<br>类型', '所属<br>市区', '预警<br>等级', '是否<br>通知']);
+// const tableData = ref([
+//   ['#1', '位移监测', 'xx县', '一级'],
+//   ['#2', '位移监测', 'xx县', '二级'],
+//   ['#3', '位移监测', 'xx县', '一级'],
+//   ['#4', '位移监测', 'xx县', '二级'],
+//   ['#5', '位移监测', 'xx县', '四级'],
+//   ['#6', '位移监测', 'xx县', '三级'],
+//   ['#7', '位移监测', 'xx县', '二级'],
+//   ['#8', '位移监测', 'xx县', '四级'],
+//   ['#9', '位移监测', 'xx县', '四级']
+// ]);
 
 
 watch (signalofWyjc_conf.value,async(newData)=>{
@@ -137,7 +148,7 @@ watch (signalofWyjc_conf.value,async(newData)=>{
 
 #overlay-text {
   position: absolute;
-  top: 5%;
+  top: 6%;
   left: 32%;
   transform: translate(-50%, -50%);
   font-family: '黑体', sans-serif;
@@ -150,14 +161,14 @@ watch (signalofWyjc_conf.value,async(newData)=>{
   color: white;
   font-size: 30px;
   position: absolute;
-  top: 20%;
+  top: 40%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
 
 .text {
   color: white;
-  font-size: 17px;
+  font-size: 15px;
 }
 
 .text2 {
@@ -221,7 +232,7 @@ table {
 
 th, td {
   padding: 5px;
-  border: 1px solid red;
+  border: 1px solid rgba(255, 255, 255,0);
   text-align: left;
   color: white;
 }
