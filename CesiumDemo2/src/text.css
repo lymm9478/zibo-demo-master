@@ -1,0 +1,61 @@
+@font-face {
+    font-family: '01';
+    src: url('./assets/字体/Alibaba-PuHuiTi-Bold.ttf') format('truetype');
+    /* Add other font properties if needed */
+}
+
+@font-face {
+    font-family: '02';
+    src: url('./assets/字体/Alibaba-PuHuiTi-Bold_0.ttf') format('truetype');
+    /* Add other font properties if needed */
+}
+@font-face {
+    font-family: '03';
+    src: url('./assets/字体/Alibaba-PuHuiTi-Light.ttf') format('truetype');
+    /* Add other font properties if needed */
+}
+@font-face {
+    font-family: '04';
+    src: url('./assets/字体/Alibaba-PuHuiTi-Medium.ttf') format('truetype');
+    /* Add other font properties if needed */
+}
+@font-face {
+    font-family: '05';
+    src: url('./assets/字体/Alibaba-PuHuiTi-Regular.ttf') format('truetype');
+    /* Add other font properties if needed */
+}
+@font-face {
+    font-family: '06';
+    src: url('./assets/字体/Rajdhani.ttf') format('truetype');
+    /* Add other font properties if needed */
+}
+@font-face {
+    font-family: '07';
+    src: url('./assets/字体/Rajdhani-Bold.ttf') format('truetype');
+    /* Add other font properties if needed */
+}
+@font-face {
+    font-family: '08';
+    src: url('./assets/字体/Rajdhani-Light.ttf') format('truetype');
+    /* Add other font properties if needed */
+}
+@font-face {
+    font-family: '09';
+    src: url('./assets/字体/Rajdhani-Medium.ttf') format('truetype');
+    /* Add other font properties if needed */
+}
+@font-face {
+    font-family: '10';
+    src: url('./assets/字体/Rajdhani-SemiBold.ttf') format('truetype');
+    /* Add other font properties if needed */
+}
+@font-face {
+    font-family: '11';
+    src: url('./assets/字体/优设标题黑.ttf') format('truetype');
+    /* Add other font properties if needed */
+}
+@font-face {
+    font-family: '12';
+    src: url('./assets/字体/优设好身体.ttf') format('truetype');
+    /* Add other font properties if needed */
+}

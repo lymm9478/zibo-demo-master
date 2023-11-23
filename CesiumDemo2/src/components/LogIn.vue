@@ -63,32 +63,34 @@ function login(){
 </script>
 
 <style scoped>
+@import url('../text.css');
 #background {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url('../../public/UI/登录界面.png');
+  background-image: url('../../public/UI/标题/bg12.jpg');
   background-size: cover;
   background-position: center;
 
   z-index: 0; /* Place the background behind other content */
 }
 #Login-message {
-  height: 440px;
-  width: 640px;
+  height: 45.5%;
+  width: 33%;
   position: relative;
   left: 50%; /* 修改为 50% */
   top: 30%;
   max-width: 100%;
   background-image: url('../../public/UI/五1.png');
+  background-size:cover;
   transform: translateX(-50%); /* 居中显示 */
 }
 #header-text {
   position: relative;
   top: -25%;
-  font-family: 'Roboto', sans-serif; /* 使用 Roboto 字体 */
+  font-family: '01', sans-serif; /* 使用 Roboto 字体 */
   font-weight: bold; /* 加粗 */
   font-style: italic;
   color: white;

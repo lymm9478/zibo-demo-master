@@ -1,24 +1,51 @@
 <template>
-  <div style="transform: translate(5%,5%);
-       width: 90%; height:90%; opacity: 1">
+  <div style="transform: translate(5%,5%); width: 90%; height:90%; opacity: 1">
     <img id="LTIng" src="../../public/UI/UI/模块/小标题2.png">
     <span id="overlay-text">推送提醒</span>
-    <div id="topInfo" class="container">
+    <div id="topInfo" class="container" >
       <div class="scrolling-content">
-        <div class="text">站点#01预警信息已于15:03自动推送</div>
-        <div class="text">站点#02预警信息已于15:04自动推送</div>
-        <div class="text">站点#03预警信息已于15:04自动推送</div>
-        <!-- Add more divs as needed -->
+        <div class="text" v-for="(item, index) in messages" :key="index" @mouseover="stopScroll" @mouseleave="startScroll">{{ item }}</div>
       </div>
     </div>
   </div>
 </template>
 
 <script setup>
+import { ref } from 'vue';
 
+const messages = ref([
+  "站点#01预警信息已于15:03自动推送",
+  "站点#02预警信息已于15:04自动推送",
+  "站点#03预警信息已于15:04自动推送"
+  // 添加更多消息
+]);
+
+let isScrolling = true;
+
+const stopScroll = () => {
+  isScrolling = false;
+  console.log('我进入了')
+};
+
+const startScroll = () => {
+  isScrolling = true;
+  scrollText();
+  console.log('我离开了')
+};
+
+const scrollText = () => {
+  if (isScrolling) {
+    // 执行滚动的逻辑
+    requestAnimationFrame(scrollText);
+  }
+};
+
+// 初始启动滚动
+scrollText();
 </script>
 
 <style scoped>
+@import url('../text.css');
 #LTIng {
   max-width: 100%;
   height: auto;
@@ -26,17 +53,17 @@
 
 #overlay-text {
   position: absolute;
-  top: 13%;
-  left: 35%;
+  top: 12.5%;
+  left: 30%;
   transform: translate(-50%, -50%);
-  font-family: '黑体', sans-serif;
-  font-weight: bold;
+  font-family: '11', sans-serif;
+
   color: white;
-  font-size: 18px;
+  font-size: 22px;
 }
 
 .container {
-  height: 120px;
+  height: 103%;
   overflow: hidden;
   position: relative;
 }
@@ -44,14 +71,15 @@
 .scrolling-content {
   display: flex;
   flex-direction: column;
-  animation: scrollText 10s linear infinite;
-  overflow: hidden; /* 隐藏溢出的内容 */
-
+  animation: scrollText 5s linear infinite;
+  overflow: hidden;
 }
-.text{
-  background-color: #00b2ff;
+
+.text {
+  background-color: #83aae5;
   text-align: center;
   color: red;
+  font-weight: bold;
 }
 
 .scrolling-content div {
@@ -62,7 +90,7 @@
 
 @keyframes scrollText {
   from {
-    transform: translateY(0);
+    transform: translateY(100%);
   }
   to {
     transform: translateY(-100%);

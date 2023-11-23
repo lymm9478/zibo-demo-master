@@ -1,54 +1,36 @@
 <template>
-  <div style="transform: translate(5%,5%);
+  <div style="transform: translate(5%,10%);
        width: 90%;height:90% ;;opacity: 1" >
     <img id="LTIng" src="../../public/UI/UI/模块/小标题2.png" >
     <span id="overlay-text">站点数量</span>
     <div id="LargeK" style="width: 100%;height: 90%">
       <div class="PointInfo-1" >
         <div class="PointPs">
-          <span class="text-1">50</span>
-          <img class="icon" src="../../public/UI/UI/图标+图标框/图标4.png" alt="Your Icon">
-          <span class="text">位移监测</span>
+          <span class="text-1">{{ gnssnum }}</span>
+          <img @click="change" class="icon" src="../../public/UI/UI/图标+图标框/图标4.png" alt="Your Icon">
+          <span class="text">GNSS监测</span>
         </div>
         <div class="PointPs">
-          <span class="text-1">50</span>
+          <span class="text-1">55</span>
           <img class="icon" src="../../public/UI/UI/图标+图标框/图标4.png" alt="Your Icon">
-          <span class="text">{{ a }}</span>
+          <span class="text">雨量监测</span>
         </div>
         <div class="PointPs">
-          <span class="text-1">50</span>
+          <span class="text-1">19</span>
           <img class="icon" src="../../public/UI/UI/图标+图标框/图标4.png" alt="Your Icon">
-          <span class="text">湿度监测</span>
+          <span class="text">温湿度监测</span>
         </div>
         <div class="PointPs">
-          <span class="text-1">50</span>
+
+          <span class="text-1">22</span>
           <img class="icon" src="../../public/UI/UI/图标+图标框/图标4.png" alt="Your Icon">
           <span class="text">风向监测</span>
         </div>
       </div>
       <div class="PointInfo-2">
-        <div id="main" style="width: 100%;height: 100%"></div>
-<!--        <div class="PointPs">-->
-<!--          <span class="text-1">50</span>-->
-<!--          <img class="icon" src="../../public/UI/UI/图标+图标框/图标64.png" alt="Your Icon">-->
-<!--          <span class="text">位移监测</span>-->
-<!--        </div>-->
-<!--        <div class="PointPs">-->
-<!--          <span class="text-1">50</span>-->
-<!--          <img class="icon" src="../../public/UI/UI/图标+图标框/图标64.png" alt="Your Icon">-->
-<!--          <span class="text">雨量监测</span>-->
-<!--        </div>-->
-<!--        <div class="PointPs">-->
-<!--          <span class="text-1">50</span>-->
-<!--          <img class="icon" src="../../public/UI/UI/图标+图标框/图标64.png" alt="Your Icon">-->
-<!--          <span class="text">湿度监测</span>-->
-<!--        </div>-->
-<!--        <div class="PointPs">-->
-<!--          <span class="text-1">50</span>-->
-<!--          <img class="icon" src="../../public/UI/UI/图标+图标框/图标64.png" alt="Your Icon">-->
-<!--          <span class="text">风向监测</span>-->
+        <div id="main8" style="width: 100%;height: 100%;position: relative;top: 6%;left: -3%" ></div>
+<!--        <div id="maintable5" style=" width:50%;height:100%"></div>>-->
 
-<!--        </div>-->
       </div>
     </div>
   </div>
@@ -56,121 +38,201 @@
 </template>
 <script setup>
 import * as echarts from 'echarts';
+
 import { onMounted} from 'vue'
-import {a} from './js/Config'
+// import { watch} from 'vue'
+import {ref} from  'vue'
 //
+// import {Wyjc_conf,signalofWyjc_conf,} from "@/module/Class_Config";
+
+// 站点数量
+let gnssnum = ref(0)
 
 
-onMounted(()=>{
+// const MoveNum = ref(0)
+// const humitureNum = ref(0)
 
-  var chartDom = document.getElementById('main');
+
+onMounted (()=>{
+
+
+
+  var chartDom = document.getElementById('main8');
   var myChart = echarts.init(chartDom);
   var option;
+  var allPoint= 0
+  var info = "总数\n(" +allPoint.toString() + ")"
+  var colorList = ['#fa0009', '#f1e93a','#00FF00' , '#0048ff', '#f1e93a', '#aff', '#FF6A6A', '#fff', "#2E8B57", "#FFC125", "#FFA500", "#A020F0", "#00F5FF", "#7CFC00", "rgba(250,250,250,0.5)"];
+  var chartdata = [
+    { value: 15, name: 'GNSS监测' },
+    { value: 20, name: '雨量监测' },
+    { value: 25, name: '温湿度监测' },
+    { value: 30, name: '风力监测' },
+  ];
 
   option = {
+    title: {
+      text: info,
+      x: '33.5%',
+      y: '35%',
+      textAlign: 'center',
+      textStyle: {
+        fontSize: 12,
+        fontWeight: 'normal',
+        color: 'white'
+      },
+      subtextStyle: {
+        color: '#f1bb4c',
+        fontSize: 15
+      },
+    },
     tooltip: {
       trigger: 'item',
-      formatter: '{b}: {d}%',
+      formatter: "{b} : {c} ({d}%)"
+    },
+    grid: {
+      left: 50,
+      top: 30
+    },
+    legend: {
+      show: true,
+      //type: 'scroll',
+      orient: 'vertical',
+      //orient: 'horizontal',
+      top: "middle",
+      left: "65%",
+
+      //right: "1.5%",
+      textStyle: {
+        color: '#f2f2f2',
+        fontSize: '16',
+      },
+      icon: 'circle',
+      //formatter: function (name) {
+      //    if (!name) return '';
+      //    if (name.length > 5) {
+      //        return name =  name.slice(0,5) + '...';
+      //    } else {
+      //        return name;
+      //    }
+      //},
+      tooltip: {
+        show: true
+      }
+
     },
     series: [
+      // 主要展示层的
       {
+        radius: ['35%', '65%'],
+        center: ['35%', '45%'],
         type: 'pie',
-        startAngle: 90,
-        radius: ['70%', '85%'], // 最外环 位移监测设备
-        avoidLabelOverlap: false,
-        label: {
-          show: false,
+        itemStyle: {
+          normal: {
+            color: function (params) {
+              return colorList[params.dataIndex]
+            }
+          }
         },
-        data: [
-          {
-            value: 95,
-            name: '位移监测设备在线率', // A 设备的名称
-            itemStyle: {
-              color: '#1E90FF',
+        labelLine: {
+          normal: {
+            show: true,
+            length: 15,
+            length2: 18,
+            lineStyle: {
+              color: '#d3d3d3'
             },
+            align: 'right'
           },
-          { value: 5, itemStyle: { color: 'transparent' } }, // 补白
-        ],
+          color: "#000",
+          emphasis: {
+            show: true
+          }
+        },
+        label: {
+          normal: {
+            show: true,
+            formatter: "{c}",
+            textStyle: {
+              fontSize: 14,
+              color:'white',
+            },
+            position: 'outside'
+          }
+        },
+        data: chartdata
       },
+      // 边框的设置
       {
+        radius: ['60%', '65%'],
+        center: ['35%', '45%'],
         type: 'pie',
-        startAngle: 90,
-        radius: ['50%', '65%'], // 降雨量监测设备
-        avoidLabelOverlap: false,
         label: {
-          show: false,
-        },
-        data: [
-          {
-            value: 90,
-            name: '降雨量监测设备在线率', // B 设备的名称
-            itemStyle: {
-              color: '#00BFFF',
-            },
+          normal: {
+            show: false
           },
-          { value: 10, itemStyle: { color: 'transparent' } }, // 补白
-        ],
-      },
-      {
-        type: 'pie',
-        startAngle: 90,
-        radius: ['30%', '45%'], // 温湿度监测设备
-        avoidLabelOverlap: false,
-        label: {
-          show: false,
+          emphasis: {
+            show: false
+          }
         },
-        data: [
-          {
-            value: 85,
-            name: '温湿度监测设备在线率', // C 设备的名称
-            itemStyle: {
-              color: '#87CEEB',
-            },
+        labelLine: {
+          normal: {
+            show: false
           },
-          { value: 15, itemStyle: { color: 'transparent' } }, // 补白
-        ],
-      },
-      {
-        type: 'pie',
-        startAngle: 90,
-        radius: ['10%', '25%'], // 风向监测设备
-        avoidLabelOverlap: false,
-        label: {
-          show: false,
+          emphasis: {
+            show: false
+          }
         },
-        data: [
-          {
-            value: 60,
-            name: '风向监测设备在线率', // D 设备的名称
-            itemStyle: {
-              color: '#B0E0E6',
-            },
-          },
-          { value: 40, itemStyle: { color: 'transparent' } }, // 补白
-        ],
+        animation: false,
+        tooltip: {
+          show: false
+        },
+        itemStyle: {
+          normal: {
+            color: 'rgba(250,250,250,0.5)'
+          }
+        },
+        data: [{
+          value: 1,
+        }],
       },
-    ],
+
+    ]
   };
 
   option && myChart.setOption(option);
 
 })
+
+// watch (signalofWyjc_conf.value,async()=>{
+//   MoveNum.value = Wyjc_conf.value.nums
+//
+//   humitureNum.value = Wyjc_conf.value.nums
+//   console.log(Wyjc_conf.value);
+//   // console.log(newData);
+// })
+function change(){
+  gnssnum.value=gnssnum.value+1;
+}
 </script>
 
 <style scoped>
+@import url('../text.css');
 #LTIng{
+  position: relative;
+  top: -1%;
   max-width: 100%; /* 图片最大宽度为其容器的100% */
   height: auto; /* 保持宽高比，自动调整高度 */
 }
 #overlay-text {
   position: absolute;
-  top: 7%; /* 垂直居中 */
-  left: 31%; /* 水平居中 */
+  top: 8%; /* 垂直居中 */
+  left: 30%; /* 水平居中 */
   transform: translate(-50%, -50%);
-  font-family: '黑体', sans-serif; /* 使用黑体字体 */
-  font-weight: bold; /* 加粗 */
+  font-family: '11', sans-serif; /* 使用黑体字体 */
+
   color: white; /* 白色文字 */
-  font-size:18px;
+  font-size:22px;
 }
 .PointInfo-1{
   overflow: hidden; /* 隐藏溢出部分 */
@@ -185,7 +247,7 @@ onMounted(()=>{
   /*border-image-slice: 1; !* 定义边框图像的填充方式，1 表示整个边框都被填充 *!*/
   display: flex;
   width: 100%;
-  height: 100%;
+  height: 66%;
 }
 .PointPs{
   position: relative;

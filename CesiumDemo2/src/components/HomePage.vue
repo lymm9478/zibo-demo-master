@@ -7,14 +7,14 @@
       <!--        </div>-->
       <div id="time">{{ formattedTime }}</div>
       <div id="updatetime-container">
-        <div id="updatetime">平台数据已更{{a}}新，更新时间为 12:00</div>
+        <div id="updatetime">平台数据已更{{ a }}新，更新时间为 12:00</div>
       </div>
       <div id="setting" title="设置" class="clickable-element"></div>
       <div id="logout" title="退出登录" class="clickable-element">
-          <div id="logoutImg"></div>
-          <div>退出</div>
+        <div id="logoutImg"></div>
+        <div>退出</div>
       </div>
-      <div id="userinfo" title="用户信息" >
+      <div id="userinfo" title="用户信息">
         <div id="userinfoImg"></div>
         <div>用户名</div>
       </div>
@@ -23,53 +23,66 @@
     </div>
     <div id="content" style="display: flex; height: 93%">
       <!-- 左侧信息 -->
-      <div id="left-section" style=" display: flex; flex-direction: column; width: calc(20% - 2px);">
+      <div v-if="!globalData.buttonVal" id="left-section"
+           style=" display: flex; flex-direction: column; width: calc(20% - 2px);">
         <!-- 上侧信息 -->
-        <div id="left-section-top" style=" flex: 1;">
-          <LTInfo />
+        <div id="left-section-top" style=" position: relative;top: -3%">
+          <LTInfo/>
         </div>
         <!-- 中间信息 -->
         <div id="left-section-middle-top" style=" flex: 1;">
           <!-- Middle top content goes here -->
-          <LMInfo />
+          <LMInfo/>
         </div>
         <!-- 下侧1信息 -->
         <div id="left-section-bottom" style="flex: 1;">
-          <LBInfo />
+          <LBInfo/>
         </div>
       </div>
-
-      <!-- 中侧信息（地图） -->
-      <div id="middle-section" style=" display: flex; flex-direction: column; width: calc(20% - 2px);">
-        <!-- 上侧信息 -->
-        <div id="middle-section-top" style=" height: 70%">
-          <!-- Upper content goes here -->
-          <p>Upper Section</p>
+      <div v-else id="left-section" style=" display: flex; flex-direction: column; width: calc(20% - 2px);">
+        <div id="left-section-top" style=" position: relative;top: -3%">
+          <NewLInfo/>
         </div>
-
-
+      </div>
+      <!-- 中侧信息（地图） -->
+      <div id="middle-section" style="  flex-direction: column; width: calc(20% - 2px);">
+        <!-- 上侧信息 -->
+        <div id="middle-section-top" style=" height: 90%">
+          <!-- Upper content goes here -->
+          <!-- <p>Upper Section</p> -->
+          <leftFunctionButton/>
+          <MapContainer/>
+          <!-- <a-button @click="getData">asd</a-button> -->
+        </div>
         <!-- 下侧信息 -->
-        <div id="middle-section-bottom" style="height: 30% ">
+        <div id="middle-section-bottom" style="height:9% ">
           <!-- Lower content goes here -->
-         <BMInfo />
+          <BMInfo/>
         </div>
       </div>
 
       <!-- 右侧信息 -->
-      <div id="right-section" style=" display: flex; flex-direction: column; width: calc(20% - 2px);">
+      <div v-if="!globalData.buttonVal" id="right-section"
+           style=" display: flex; flex-direction: column; width: calc(20% - 2px);">
         <!-- 上侧信息 -->
-        <div id="right-section-top" style=" height: 50%">
-          <RTInfo />
+        <div id="right-section-top" style=" height: 46%">
+          <RTInfo/>
         </div>
         <!-- 中间信息 -->
-        <div id="right-section-middle-top" style=" height: 30%">
+        <div id="right-section-middle-top" style=" position: relative;top: -5%;height: 32%">
           <!-- Middle top content goes here -->
-          <RMInfo />
+
+          <RMInfo/>
         </div>
         <!-- 下侧信息 -->
-        <div id="right-section-bottom" style=" height: 20%">
-          <RBInfo />
+        <div id="right-section-bottom" style=" height: 24%">
+          <RBInfo/>
         </div>
+      </div>
+      <div v-else id="right-section" style=" display: flex; flex-direction: column; width: calc(20% - 2px);">
+        <div id="right-section-top" style=" height: 46%">
+          <NewRInfo/>
+</div>
       </div>
     </div>
     <div id="background"></div>
@@ -85,17 +98,35 @@ import RBInfo from './RBInfo'
 import RMInfo from './RMInfo'
 import LMInfo from './LMInfo'
 import BMInfo from './BMInfo'
+import leftFunctionButton from './leftFunctionButton'
+import MapContainer from './MapContainer.vue'
+import {
+  loadBeseMap,
+  // DEMSwitch
+  // addhumitureDirection,
+  // addMoveDirection,
+  // addrainfallDirection,
+  // addWindDirection
+} from '@/module/Class_MiddleMap'
 import {a} from './js/Config'
+import {getData} from "@/module/AnalysisJson";
+// import {signalofWyjc_conf} from "@/module/Class_Config.js";
 
 // import Login  from '@/module/Class_Login.js'
-import {ref, onMounted} from 'vue'
+import {ref, onMounted,} from 'vue'
+
+let globalData = inject("globalData")
+
+import NewLInfo from "@/components/NewLInfo";
+import NewRInfo from "@/components/NewRInfo";
+import { inject } from 'vue';
 // import router from '../router/index.js'
 const formattedTime = ref(getCurrentTime());
 
 
 function getCurrentTime() {
-  a.value =false
-  console.log(a.value)
+  a.value = false
+  // console.log(a.value)
   const date = new Date();
   const year = date.getFullYear();
   const month = addZero(date.getMonth() + 1);
@@ -113,23 +144,22 @@ function addZero(value) {
 // 利用onMounted钩子，确保组件已经挂载后再更新时间
 let addtime = 0;
 onMounted(() => {
+  // AnalysisJson.getData();
   setInterval(() => {
     formattedTime.value = getCurrentTime();
-    if(addtime==0){
+    if (addtime == 0) {
       getCurrInfo();
 
     }
   }, 1000);
 });
 
-onMounted(() => {
-  setInterval(() => {
-    getCurrInfo();
-
-  }, 60*1000);
-});
-
-
+// onMounted(() => {
+//   AnalysisJson.getData();
+//   setInterval(() => {
+//     getCurrInfo();
+//   }, 60*1000);
+// });
 
 
 String.prototype.padLeft = function (len, char) {
@@ -144,29 +174,32 @@ function getCurrInfo() {
   var _date = new Date();
   var h = _date.getHours().toString().padLeft(2, '0');
   var M = _date.getMinutes();
-  var new_M = M > 30 ? "30" : "00";
+  var new_M = M;
 
-  // 假设存在一个元素 id 为 "updatetime"，你可以使用原生 JavaScript 或其他库来更新内容
   var updateTimeElement = document.getElementById("updatetime");
   if (updateTimeElement) {
     updateTimeElement.innerHTML = "平台数据已更新，更新时间为 " + h + ":" + new_M;
   }
+
 }
 
-
-function main(){
+function main() {
   // if (!Login.logined){
   //   // console.log('13')
   //   router.push('/login')
   // }
+  loadBeseMap()
+  getData()
+  // console.log(signalofWyjc_conf.value);
+  // console.log();
+  // addhumitureDirection()
+  // addMoveDirection()
+  // addrainfallDirection()
+  // addWindDirection()
 }
+
 main()
-
-
-
-
 </script>
-
 <style scoped>
 
 
@@ -174,7 +207,7 @@ main()
   cursor: pointer;
 }
 
-
+@import url('../text.css');
 body {
   margin: 0;
   padding: 0;
@@ -203,8 +236,9 @@ body {
 
 
 #system-name {
-  font-size: 2.5em;
-  font-weight: bold;
+  font-family: '11', sans-serif;
+  font-size: 3.0em;
+
   text-align: center;
   width: 100%;
   margin-top: -20px; /* 负的 margin-top 值将文字上移，根据需要调整 */
@@ -212,12 +246,11 @@ body {
 }
 
 
-
-#time{
+#time {
   position: absolute;
   font-size: 20px;
   left: 5%;
-  top:30%;
+  top: 30%;
 }
 
 #updatetime-container {
@@ -249,7 +282,7 @@ body {
   align-items: center; /* 居中对齐 */
   position: absolute;
   font-size: 20px;
-  right:2%;
+  right: 2%;
   top: 9%;
 }
 
@@ -260,7 +293,8 @@ body {
   background-image: url('../../public/UI/login-out-new.png');
   margin-right: 10px; /* 调整图标和文字之间的距离 */
 }
-#userinfo{
+
+#userinfo {
   display: flex;
   align-items: center; /* 居中对齐 */
   position: absolute;
@@ -268,7 +302,8 @@ body {
   right: 8%;
   top: 9%;
 }
-#userinfoImg{
+
+#userinfoImg {
   position: relative;
   width: 50px;
   height: 50px;
@@ -287,23 +322,33 @@ body {
 }
 
 #left-section,
-#middle-section,
-#right-section {
+#middle-section{
   height: 100%;
   display: flex;
   flex-direction: column;
-  position:relative
-
+  position: relative
 }
+
+#right-section {
+  height: 96%;
+  display: flex;
+  flex-direction: column;
+  position: relative
+}
+
 
 #left-section {
 
   width: 25%;
 }
 
-#left-section-top,
-#left-section-bottom {
+#left-section-top {
   flex: 1;
+}
+
+#left-section-bottom {
+  position: relative;
+  top: -11%;
 }
 
 #middle-section {
@@ -315,7 +360,7 @@ body {
 
 #middle-section-top {
 
-  flex: 80%;
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -323,7 +368,7 @@ body {
 
 #middle-section-bottom {
 
-  flex: 20%;
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -334,10 +379,16 @@ body {
   width: 25%;
 }
 
-#right-section-top,
-#right-section-bottom {
+#right-section-top {
   flex: 1;
-  position:relative
+  position: relative;
+  top: -1%;
+}
+
+#right-section-bottom {
+
+  position: relative;
+  top: -6%
 }
 
 /* Add a new div for the background image */
@@ -347,7 +398,7 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url('../../public/UI/标题/bg.jpg');
+  background-image: url('../../public/UI/标题/bg2.png');
   background-size: cover;
   background-position: center;
   z-index: 0; /* Place the background behind other content */
