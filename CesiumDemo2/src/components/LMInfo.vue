@@ -43,7 +43,7 @@ onMounted(()=>{
         show: false // 隐藏网格线
       },
       type: 'value',
-      name: "(台) ",
+      name: "(台)        ",
       nameTextStyle: {
         color: "#fff",
         fontFamily: "FZLTHK--GBK1-0",

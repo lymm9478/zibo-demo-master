@@ -8,15 +8,15 @@
       </div>
       <div class="button">
         <img class="img"   src="../../public/UI/一级导航/矩形22.png">
-        <p class="text">功能模块</p>
+        <p class="text">物联感知</p>
       </div>
       <div class="button">
         <img  class="img"   src="../../public/UI/一级导航/矩形33.png">
-        <p class="text">功能模块</p>
+        <p class="text">数字大屏</p>
       </div>
       <div class="button">
         <img  class="img"   src="../../public/UI/一级导航/矩形44.png">
-        <p class="text">功能模块</p>
+        <p class="text">后台管理</p>
       </div>
       <div class="button">
         <img  class="img"   src="../../public/UI/一级导航/矩形55.png">

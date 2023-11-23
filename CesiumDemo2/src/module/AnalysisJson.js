@@ -1,5 +1,5 @@
 import axios from "axios";
-import Config from "./Class_Config";
+import {Wyjc_conf,chengeSingal} from "./Class_Config.js";
 
 
 class Wyjc{
@@ -27,7 +27,7 @@ class YJINFO{//预警信息 ，存储每个区,对应的预警等级
 
 
 
-const getData = () => {
+export function getData () {
   axios
     .get( "/WYJC.geojson" ,{
       params: {
@@ -36,8 +36,7 @@ const getData = () => {
     }
  )
     .then((res) => {
-      
-      var wy_decice=new Wyjc();
+      let wy_decice=new Wyjc();
       var YJINFO_City_arr=[];
 
       //console.log(res.data);
@@ -144,20 +143,20 @@ const getData = () => {
         }
       }
     }
-
-
-
-
       wy_decice.map_nums_area=nums_area_map;
       wy_decice.nums_warn=nums_warn_map;
       wy_decice.nums_arae_warn=YJINFO_City_arr;
       // console.log(res.data.data);
-      console.log("ok");
-      Config.Wyjc_conf=wy_decice
-      //return wy_decice;
-     
+      // console.log("ok");
+      
+      // console.log(typeof Wyjc_conf.value);
+      Wyjc_conf.value=wy_decice
+      chengeSingal()
+      // signalofWyjc_conf.value['key']=!signalofWyjc_conf.value['key']
+      // console.log(Wyjc_conf.value);     
+      // console.log(signalofWyjc_conf.value);     
     }).catch(error =>{console.log(error)});
-};
+}
 
 // const Zzexpres=(str)=>{
 //   const matches = str.match(/([\d\.]+)(\D+)/);

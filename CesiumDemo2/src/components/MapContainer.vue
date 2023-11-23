@@ -1,5 +1,5 @@
 <template>
-  <div id="cesiumContainer" style="width: 100%;height:85% ;opacity: 1"></div>
+  <div id="cesiumContainer" style="width: 100%;height:78% ;opacity: 1"></div>
 </template>
 <script setup>
 import {onMounted} from "vue";
