@@ -1,10 +1,13 @@
 <!---人员权限管理-->
 <template>
+   <a-button @click="addRow"  class="addacc" type="primary" style="background-color: #6bc7a1;"><span><PlusCircleOutlined style="padding-right: 3px;" />添加账号
+    
+   </span></a-button>
     <a-table :columns="columns" :data-source="data" @resizeColumn="handleResizeColumn">
       <template #headerCell="{ column }">
         <template v-if="column.key === 'account'">
           <span>
-            <smile-outlined />
+            <!-- <smile-outlined /> -->
             账号
           </span>
         </template>
@@ -12,8 +15,8 @@
   
       <template #bodyCell="{ column, record }">
         <template v-if="column.key === 'account'">
-          <a>
-            {{ record.account }}
+          <a style="color:#6bc7a1;">
+        {{ record.account }}
           </a>
         </template>
         <template v-else-if="column.key === 'tags'">
@@ -29,11 +32,11 @@
         </template>
         <template v-else-if="column.key === 'action'">
           <span>
-            <a>编辑</a>
+            <a @click="EditInfo" style="color: #6bc7a1;">编辑</a>
             <a-divider type="vertical" />
-            <a>删除</a>
+            <a  @click="handleRowDelete"  style="color: #6bc7a1;">删除</a>
             <a-divider type="vertical" />
-            <a class="ant-dropdown-link">
+            <a style="color: #6bc7a1;" class="ant-dropdown-link">
               改密
               <!-- <down-outlined /> -->
             </a>
@@ -43,7 +46,14 @@
     </a-table>
   </template>
   <script setup>
-  import { ref } from 'vue';
+ 
+  import {ref, onMounted,reactive} from 'vue'
+  import axios from 'axios';
+
+  const tableData = ref([]); // 表格数据  
+  const editData = reactive({}); // 编辑数据  
+
+ 
   const data = [
     {
       key: '1',
@@ -67,6 +77,7 @@
       tags: ['启用'],
     },
   ];
+
   const columns = ref([
     {
       dataIndex: 'account',
@@ -102,4 +113,61 @@
   function handleResizeColumn(w, col) {
     col.width = w;
   }
+
+  const EditInfo=()=>{
+      editData.id =' row.id';  
+      editData.name = 'row.name';  
+      // ...根据你的数据结构赋值编辑数据  
+  }
+  const loadTableData = async () => {  
+      try {  
+        const response = await axios.get('/api/tableData'); // 替换为你的后端数据接口地址  
+        tableData.value = response.data; // 设置表格数据  
+      } catch (error) {  
+        console.error(error);  
+      }  
+    };
+
+//添加数据
+const addRow=async()=> {  
+    const response = await axios.post('/api/tableData', {  
+      // 发送你需要的数据字段  
+      column1: 'value1',  
+      column2: 'value2',  
+      // ...  
+    });  
+    // 处理响应数据，更新表格数据  
+     tableData.value.push(response.data);  
+  }
+//删除数据
+const handleRowDelete = async (row) => {  
+      try {  
+        await axios.delete(`/api/tableData/${row.id}`); // 替换为你的后端删除接口地址  
+        tableData.value = [...tableData.value].filter(data => data.id !== row.id); // 从表格数据中删除行  
+      } catch (error) {  
+        console.error(error);  
+      }  
+    };  
+    axios.interceptors.request.use((config) => { console.log(config.url) })
+   
+    setInterval (() => {}, 1500)
+  // 在组件挂载后加载表格数据  
+    loadTableData();  
+
+
+  onMounted(()=>{
+
+
+})
+
   </script>
+
+  <style scoped>
+.addacc{
+  background-color: rgb(107, 199, 161);
+    position: relative;
+    right: -78.5vw;
+    /* left: 47px; */
+    top: -1vh;
+}
+</style>

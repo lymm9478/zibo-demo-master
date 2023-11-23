@@ -11,7 +11,9 @@ import BackStageManager from '../components/DataBase/BackStageManager.vue'
 
 //异步
 const AuthorityMg = ()=>import('../components/DataBase/AuthorityMg.vue')
-const AuthorityMg2 = ()=>import('../components/DataBase/AuthorityMg2.vue')
+const SourceMg = ()=>import('../components/DataBase/SourceMg.vue')
+const SourceGroupeMg=()=>import('../components/DataBase/SourceGroupeMg.vue')
+
 const router = createRouter({
     history: createWebHistory(),
   routes: [
@@ -27,21 +29,42 @@ const router = createRouter({
 
     },
     {
-        //��̨������ҳ
+        //��̨������ҳ
         path:'/bg',
         name:'backstage',
+        meta: {
+            title: 'Home',
+            //keepalive: true
+          },
         component:BackStageManager,
         redirect:'/bg/authmg',//默认打开的路由
         children:[
             {
                 path:'authmg',
                 name:'authormage',
+                meta: {
+                    title: '权限管理',
+                    //keepalive: true
+                  },
                 component: AuthorityMg
             },
             {
-                path:'authmg2',
-                name:'authormage2',
-                component: AuthorityMg2
+                path:'sourcemg',
+                name:'sourcemg',
+                meta: {
+                    title: '资源管理',
+                   // keepalive: true //已经使用了routerview
+                  },
+                component: SourceMg
+            },
+            {
+                path:'sourcegroupemg',
+                name:'sourcegroupemg',
+                meta: {
+                    title: '资源组管理',
+                    //keepalive: true
+                  },
+                component: SourceGroupeMg
             },
 
         ]
