@@ -96,78 +96,91 @@ export function removeEntityByIDArray(IDOfEntityArray) {
     })
 }
 // humitureDirection
+// 添加温湿度测量点
 export function addhumitureDirection(){
+    return  new Promise((resolve) => {
     let PointIdArrary = []
     new Cesium.GeoJsonDataSource().load(humitureDirection).then((dataSource)=>{
         dataSource.entities.values.forEach((points)=>{
-            // console.log(points.position.getValue(Cesium.JulianDate.now()));
+            // console.log(points);
             PointIdArrary.push(Config.Viewer.entities.add(
                 new Cesium.Entity({
+                    name:"humiturePoint",
                     position: points.position.getValue(Cesium.JulianDate.now()),
                     billboard:{
                         image:'/UI/UI/图标+图标框/humiture.png',
                         scale:0.2,
-                    }
+                    },
+                    properties:points['properties']
                 })
             ).id)
         })
-        return PointIdArrary
-    })
+        resolve(PointIdArrary)
+    })})
 }
-
+// 添加位移点
 export function addMoveDirection(){
+    return  new Promise((resolve) => {
     let PointIdArrary = []
     new Cesium.GeoJsonDataSource().load(MoveDirection).then((dataSource)=>{
         dataSource.entities.values.forEach((points)=>{
             // console.log(points.position.getValue(Cesium.JulianDate.now()));
             PointIdArrary.push(Config.Viewer.entities.add(
                 new Cesium.Entity({
+                    name:"MovePoint",
                     position: points.position.getValue(Cesium.JulianDate.now()),
                     billboard:{
                         image:'/UI/UI/图标+图标框/move.png',
                         scale:0.2,
-                    }
+                    },
+                    properties:points['properties']
                 })
             ).id)
         })
-        return PointIdArrary
-    })
+        resolve( PointIdArrary)
+    })})
 }
-
+// 添加降雨量点
 export function addrainfallDirection(){
+    return  new Promise((resolve) => {
     let PointIdArrary = []
     new Cesium.GeoJsonDataSource().load(rainfallDirection).then((dataSource)=>{
         dataSource.entities.values.forEach((points)=>{
             // console.log(points.position.getValue(Cesium.JulianDate.now()));
             PointIdArrary.push(Config.Viewer.entities.add(
                 new Cesium.Entity({
+                    name:"rainfallPoint",
                     position: points.position.getValue(Cesium.JulianDate.now()),
                     billboard:{
                         image:'/UI/UI/图标+图标框/rainfall.png',
                         scale:0.2,
-                    }
+                    },
+                    properties:points['properties']
                 })
             ).id)
         })
-        return PointIdArrary
-    })
+        resolve(PointIdArrary)
+    })})
 }
-
+// 添加风向点
 export function addWindDirection(){
-    let PointIdArrary = []
-    new Cesium.GeoJsonDataSource().load(WindDirection).then((dataSource)=>{
+    return  new Promise((resolve) => {
+         let PointIdArrary = []
+        new Cesium.GeoJsonDataSource().load(WindDirection).then((dataSource)=>{
         dataSource.entities.values.forEach((points)=>{
             // console.log(points.position.getValue(Cesium.JulianDate.now()));
             PointIdArrary.push(Config.Viewer.entities.add(
                 new Cesium.Entity({
+                    name:"WindPoint",
                     position: points.position.getValue(Cesium.JulianDate.now()),
                     billboard:{
                         image:'/UI/UI/图标+图标框/windDirection.png',
                         scale:0.2,
-                    }
+                    },
+                    properties:points['properties']
                 })
             ).id)
         })
-        return PointIdArrary
-    })
+        resolve(PointIdArrary)
+    })})
 }

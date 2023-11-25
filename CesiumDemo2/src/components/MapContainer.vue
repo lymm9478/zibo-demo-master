@@ -5,7 +5,7 @@
 import {onMounted} from "vue";
 import Config from "@/module/Class_Config";
 import { InitialCameraLocation } from "@/module/Class_MiddleMap";
-// import {selectedEntityTree} from "@/module/Class_Listening";
+import {selectedEntityTree} from "@/module/Class_Listening";
 
 onMounted(() => {
   let viewer = new Cesium.Viewer("cesiumContainer", {
@@ -60,7 +60,9 @@ onMounted(() => {
   viewer.scene.screenSpaceCameraController.enableCollisionDetection = true;
   viewer.scene.globe.translucency.enabled = false;
   viewer.scene.globe.translucency.frontFaceAlphaByDistance = new Cesium.NearFarScalar(400.0, 1.0, 80000, 0.0);
-  
+  viewer.selectedEntityChanged.addEventListener(function(selectedEntity) {
+        selectedEntityTree(selectedEntity);
+  })
   Config.Viewer = viewer;
   InitialCameraLocation()
 })
