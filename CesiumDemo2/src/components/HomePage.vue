@@ -1,4 +1,5 @@
 <template>
+<!--  大屏-->
   <div style="width: 100vw;height: 100vh">
     <div id="header">
       <div id="system-name">在线安全监测分析云管理软件</div>
@@ -87,6 +88,12 @@
     </div>
     <div id="background"></div>
   </div>
+<!--  因子信息查询-->
+  <div id="factorInfo"  v-if="globalData.buttonVal">
+
+    <FactorInformation/>
+  </div>
+
 
 
 </template>
@@ -100,6 +107,7 @@ import LMInfo from './LMInfo'
 import BMInfo from './BMInfo'
 import leftFunctionButton from './leftFunctionButton'
 import MapContainer from './MapContainer.vue'
+import FactorInformation from "@/components/FactorInformation";
 import {
   loadBeseMap,
   // DEMSwitch
@@ -208,6 +216,18 @@ main()
 }
 
 @import url('../text.css');
+#factorInfo{
+  display: block;
+  z-index: 10000;
+  position: absolute;
+  top: 70%;
+  left: 22%;
+  width: 56%;
+  height: 20%;
+  background:rgba(16,54,87,0.7);
+  border:1px solid #1c487a;
+}
+
 body {
   margin: 0;
   padding: 0;

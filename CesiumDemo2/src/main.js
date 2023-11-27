@@ -7,7 +7,8 @@ import App from './App.vue'
 import router from './router/index.js'
 
 const globalData = reactive({
-    buttonVal: false
+    buttonVal: false,
+    isLogin:false
 });
 
 const app = createApp(App);

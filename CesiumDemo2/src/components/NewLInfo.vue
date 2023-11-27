@@ -8,7 +8,250 @@
         <div id="selectTest">设备列表</div>
          <input id="inputInfo" type="text" autocomplete="off" placeholder="设备搜索">
       </div>
-      <div id="allInfo"></div>
+      <div id="allInfo">
+        <div id="allInfo2">
+          <div class="listBox">
+            <img style="position: absolute;top: -1%;left: 0%" src="../../public/UI/listBox.png" alt="">
+            <img style="position: absolute;top: 0%;right: 0%" src="../../public/UI/listBox.png" alt="">
+            <img style="position: absolute;bottom: 1%;left: 0%" src="../../public/UI/listBox.png" alt="">
+            <img style="position: absolute;bottom: 0%;right: 0%" src="../../public/UI/listBox.png" alt="">
+            <a class="aInfo">
+              <img style="margin-right:3% " src="../../public/UI/listBox.png" alt="">
+              GNSS监测设备一号
+            </a>
+            <div class="middleInfo">
+              <span class="onLine">在线</span>
+            </div>
+            <div class="rightInfo">
+              <span>查询</span>
+            </div>
+          </div>
+          <div class="listBox">
+            <img style="position: absolute;top: -1%;left: 0%" src="../../public/UI/listBox.png" alt="">
+            <img style="position: absolute;top: 0%;right: 0%" src="../../public/UI/listBox.png" alt="">
+            <img style="position: absolute;bottom: 1%;left: 0%" src="../../public/UI/listBox.png" alt="">
+            <img style="position: absolute;bottom: 0%;right: 0%" src="../../public/UI/listBox.png" alt="">
+            <a class="aInfo">
+              <img style="margin-right:3% " src="../../public/UI/listBox.png" alt="">
+              GNSS监测设备一号
+            </a>
+            <div class="middleInfo">
+              <span class="">离线</span>
+            </div>
+            <div class="rightInfo">
+              <span >查询</span>
+            </div>
+          </div>
+          <div class="listBox">
+            <img style="position: absolute;top: -1%;left: 0%" src="../../public/UI/listBox.png" alt="">
+            <img style="position: absolute;top: 0%;right: 0%" src="../../public/UI/listBox.png" alt="">
+            <img style="position: absolute;bottom: 1%;left: 0%" src="../../public/UI/listBox.png" alt="">
+            <img style="position: absolute;bottom: 0%;right: 0%" src="../../public/UI/listBox.png" alt="">
+            <a class="aInfo">
+              <img style="margin-right:3% " src="../../public/UI/listBox.png" alt="">
+              GNSS监测设备一号
+            </a>
+            <div class="middleInfo">
+              <span class="onLine">在线</span>
+            </div>
+            <div class="rightInfo">
+              <span>查询</span>
+            </div>
+          </div>
+          <div class="listBox">
+            <img style="position: absolute;top: -1%;left: 0%" src="../../public/UI/listBox.png" alt="">
+            <img style="position: absolute;top: 0%;right: 0%" src="../../public/UI/listBox.png" alt="">
+            <img style="position: absolute;bottom: 1%;left: 0%" src="../../public/UI/listBox.png" alt="">
+            <img style="position: absolute;bottom: 0%;right: 0%" src="../../public/UI/listBox.png" alt="">
+            <a class="aInfo">
+              <img style="margin-right:3% " src="../../public/UI/listBox.png" alt="">
+              GNSS监测设备一号
+            </a>
+            <div class="middleInfo">
+              <span class="onLine">在线</span>
+            </div>
+            <div class="rightInfo">
+              <span>查询</span>
+            </div>
+          </div>
+          <div class="listBox">
+            <img style="position: absolute;top: -1%;left: 0%" src="../../public/UI/listBox.png" alt="">
+            <img style="position: absolute;top: 0%;right: 0%" src="../../public/UI/listBox.png" alt="">
+            <img style="position: absolute;bottom: 1%;left: 0%" src="../../public/UI/listBox.png" alt="">
+            <img style="position: absolute;bottom: 0%;right: 0%" src="../../public/UI/listBox.png" alt="">
+            <a class="aInfo">
+              <img style="margin-right:3% " src="../../public/UI/listBox.png" alt="">
+              GNSS监测设备一号
+            </a>
+            <div class="middleInfo">
+              <span class="onLine">在线</span>
+            </div>
+            <div class="rightInfo">
+              <span>查询</span>
+            </div>
+          </div>
+          <div class="listBox">
+            <img style="position: absolute;top: -1%;left: 0%" src="../../public/UI/listBox.png" alt="">
+            <img style="position: absolute;top: 0%;right: 0%" src="../../public/UI/listBox.png" alt="">
+            <img style="position: absolute;bottom: 1%;left: 0%" src="../../public/UI/listBox.png" alt="">
+            <img style="position: absolute;bottom: 0%;right: 0%" src="../../public/UI/listBox.png" alt="">
+            <a class="aInfo">
+              <img style="margin-right:3% " src="../../public/UI/listBox.png" alt="">
+              GNSS监测设备一号
+            </a>
+            <div class="middleInfo">
+              <span class="onLine">在线</span>
+            </div>
+            <div class="rightInfo">
+              <span>查询</span>
+            </div>
+          </div>
+          <div class="listBox">
+            <img style="position: absolute;top: -1%;left: 0%" src="../../public/UI/listBox.png" alt="">
+            <img style="position: absolute;top: 0%;right: 0%" src="../../public/UI/listBox.png" alt="">
+            <img style="position: absolute;bottom: 1%;left: 0%" src="../../public/UI/listBox.png" alt="">
+            <img style="position: absolute;bottom: 0%;right: 0%" src="../../public/UI/listBox.png" alt="">
+            <a class="aInfo">
+              <img style="margin-right:3% " src="../../public/UI/listBox.png" alt="">
+              GNSS监测设备一号
+            </a>
+            <div class="middleInfo">
+              <span class="onLine">在线</span>
+            </div>
+            <div class="rightInfo">
+              <span>查询</span>
+            </div>
+          </div>
+          <div class="listBox">
+            <img style="position: absolute;top: -1%;left: 0%" src="../../public/UI/listBox.png" alt="">
+            <img style="position: absolute;top: 0%;right: 0%" src="../../public/UI/listBox.png" alt="">
+            <img style="position: absolute;bottom: 1%;left: 0%" src="../../public/UI/listBox.png" alt="">
+            <img style="position: absolute;bottom: 0%;right: 0%" src="../../public/UI/listBox.png" alt="">
+            <a class="aInfo">
+              <img style="margin-right:3% " src="../../public/UI/listBox.png" alt="">
+              GNSS监测设备一号
+            </a>
+            <div class="middleInfo">
+              <span class="onLine">在线</span>
+            </div>
+            <div class="rightInfo">
+              <span>查询</span>
+            </div>
+          </div>
+          <div class="listBox">
+            <img style="position: absolute;top: -1%;left: 0%" src="../../public/UI/listBox.png" alt="">
+            <img style="position: absolute;top: 0%;right: 0%" src="../../public/UI/listBox.png" alt="">
+            <img style="position: absolute;bottom: 1%;left: 0%" src="../../public/UI/listBox.png" alt="">
+            <img style="position: absolute;bottom: 0%;right: 0%" src="../../public/UI/listBox.png" alt="">
+            <a class="aInfo">
+              <img style="margin-right:3% " src="../../public/UI/listBox.png" alt="">
+              GNSS监测设备一号
+            </a>
+            <div class="middleInfo">
+              <span class="onLine">在线</span>
+            </div>
+            <div class="rightInfo">
+              <span>查询</span>
+            </div>
+          </div>
+          <div class="listBox">
+            <img style="position: absolute;top: -1%;left: 0%" src="../../public/UI/listBox.png" alt="">
+            <img style="position: absolute;top: 0%;right: 0%" src="../../public/UI/listBox.png" alt="">
+            <img style="position: absolute;bottom: 1%;left: 0%" src="../../public/UI/listBox.png" alt="">
+            <img style="position: absolute;bottom: 0%;right: 0%" src="../../public/UI/listBox.png" alt="">
+            <a class="aInfo">
+              <img style="margin-right:3% " src="../../public/UI/listBox.png" alt="">
+              GNSS监测设备一号
+            </a>
+            <div class="middleInfo">
+              <span class="onLine">在线</span>
+            </div>
+            <div class="rightInfo">
+              <span>查询</span>
+            </div>
+          </div>
+          <div class="listBox">
+            <img style="position: absolute;top: -1%;left: 0%" src="../../public/UI/listBox.png" alt="">
+            <img style="position: absolute;top: 0%;right: 0%" src="../../public/UI/listBox.png" alt="">
+            <img style="position: absolute;bottom: 1%;left: 0%" src="../../public/UI/listBox.png" alt="">
+            <img style="position: absolute;bottom: 0%;right: 0%" src="../../public/UI/listBox.png" alt="">
+            <a class="aInfo">
+              <img style="margin-right:3% " src="../../public/UI/listBox.png" alt="">
+              GNSS监测设备一号
+            </a>
+            <div class="middleInfo">
+              <span class="onLine">在线</span>
+            </div>
+            <div class="rightInfo">
+              <span>查询</span>
+            </div>
+          </div>
+          <div class="listBox">
+            <img style="position: absolute;top: -1%;left: 0%" src="../../public/UI/listBox.png" alt="">
+            <img style="position: absolute;top: 0%;right: 0%" src="../../public/UI/listBox.png" alt="">
+            <img style="position: absolute;bottom: 1%;left: 0%" src="../../public/UI/listBox.png" alt="">
+            <img style="position: absolute;bottom: 0%;right: 0%" src="../../public/UI/listBox.png" alt="">
+            <a class="aInfo">
+              <img style="margin-right:3% " src="../../public/UI/listBox.png" alt="">
+              GNSS监测设备一号
+            </a>
+            <div class="middleInfo">
+              <span class="onLine">在线</span>
+            </div>
+            <div class="rightInfo">
+              <span>查询</span>
+            </div>
+          </div>
+          <div class="listBox">
+            <img style="position: absolute;top: -1%;left: 0%" src="../../public/UI/listBox.png" alt="">
+            <img style="position: absolute;top: 0%;right: 0%" src="../../public/UI/listBox.png" alt="">
+            <img style="position: absolute;bottom: 1%;left: 0%" src="../../public/UI/listBox.png" alt="">
+            <img style="position: absolute;bottom: 0%;right: 0%" src="../../public/UI/listBox.png" alt="">
+            <a class="aInfo">
+              <img style="margin-right:3% " src="../../public/UI/listBox.png" alt="">
+              GNSS监测设备一号
+            </a>
+            <div class="middleInfo">
+              <span class="onLine">在线</span>
+            </div>
+            <div class="rightInfo">
+              <span>查询</span>
+            </div>
+          </div>
+          <div class="listBox">
+            <img style="position: absolute;top: -1%;left: 0%" src="../../public/UI/listBox.png" alt="">
+            <img style="position: absolute;top: 0%;right: 0%" src="../../public/UI/listBox.png" alt="">
+            <img style="position: absolute;bottom: 1%;left: 0%" src="../../public/UI/listBox.png" alt="">
+            <img style="position: absolute;bottom: 0%;right: 0%" src="../../public/UI/listBox.png" alt="">
+            <a class="aInfo">
+              <img style="margin-right:3% " src="../../public/UI/listBox.png" alt="">
+              GNSS监测设备一号
+            </a>
+            <div class="middleInfo">
+              <span class="onLine">在线</span>
+            </div>
+            <div class="rightInfo">
+              <span>查询</span>
+            </div>
+          </div>
+          <div class="listBox">
+            <img style="position: absolute;top: -1%;left: 0%" src="../../public/UI/listBox.png" alt="">
+            <img style="position: absolute;top: 0%;right: 0%" src="../../public/UI/listBox.png" alt="">
+            <img style="position: absolute;bottom: 1%;left: 0%" src="../../public/UI/listBox.png" alt="">
+            <img style="position: absolute;bottom: 0%;right: 0%" src="../../public/UI/listBox.png" alt="">
+            <a class="aInfo">
+              <img style="margin-right:3% " src="../../public/UI/listBox.png" alt="">
+              GNSS监测设备一号
+            </a>
+            <div class="middleInfo">
+              <span class="onLine">在线</span>
+            </div>
+            <div class="rightInfo">
+              <span>查询</span>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -81,6 +324,59 @@
   border-image:initial;
   border-top: none;
   overflow-y:auto ;
+}
+#allInfo2{
+  height: 100%;
+  padding:5px;
+}
+.listBox{
+  height: 40px;
+  background: rgba(15,47,72,0.3);
+  border:1px solid #1380bd;
+  overflow:hidden;
+  position:relative;
+  color:#fff;
+  font-size:14px;
+  padding:2px 10px;
+  padding-left:5px;
+  margin-bottom:10px;
+
+}
+.aInfo{
+  pointer-events: none;
+  width:120px;
+  line-height:34px;
+  display: block;
+  float:left;
+  color:#03e5ff;
+  padding:0 5px;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap
+}
+.middleInfo{
+  margin-right: 10px;
+  width:calc(50% - 65px) ;
+  float: left;
+  height: 100%;
+  background: url("../../public/UI/小框.png");
+  background-size:100% 100%;
+  text-align: center;
+  padding-top: 3%;
+}
+.rightInfo{
+  cursor: pointer;
+  width:calc(50% - 65px);
+  float:left;
+  height:100%;
+  background: url("../../public/UI/小框.png");
+  background-size:100% 100%;
+  text-align: center;
+  padding-top: 3%;
+}
+
+.onLine{
+  color:#2afbc1 ;
 }
 
 </style>

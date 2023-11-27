@@ -1,2 +1,4 @@
 # 项目排除路径
 /CesiumDemo2/node_modules/
+/.idea
+/CesiumDemo2/.idea
