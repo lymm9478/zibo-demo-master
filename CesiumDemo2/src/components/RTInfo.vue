@@ -31,7 +31,7 @@
       <!-- <template> -->
       <div class="waring-table">
         <a-table class="ant-table-striped" :columns="warningColumns" :data-source="warningData" 
-          :pagination="false" :scroll="{ y:162 }"
+          :pagination="false" :scroll="{ y:215 }"
           >
           <!-- :row-class-name="(_record, index) => (index % 2 === 1 ? 'table-striped' : null)" -->
         </a-table>
@@ -76,7 +76,7 @@ const waringTable = {
       // 边界颜色
       "colorBorderSecondary":"#1D1D1D",
       // "borderRadius":1,
-      "lineHeight":1
+      "lineHeight":0.2
       // bodySortBg:'#000000'
       // background:''
     }
@@ -258,5 +258,8 @@ th, td {
 } */
 :deep(.table-striped) td {
   background-color: rgb(224, 73, 73);
+}
+:deep(::-webkit-scrollbar){
+  width: 0px;
 }
 </style>
