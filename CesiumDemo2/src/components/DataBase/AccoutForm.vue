@@ -6,10 +6,13 @@
       :label-col="labelCol"
       :wrapper-col="wrapperCol"
     >
-      <a-form-item ref="name" label="Activity name" name="name">
+      <a-form-item ref="name" label="账户名" name="name">
         <a-input v-model:value="formState.name" />
       </a-form-item>
-      <a-form-item label="Activity zone" name="region">
+      <a-form-item ref="password" label="密码" password="password">
+        <a-input v-model:value="formState.name" />
+      </a-form-item>
+      <a-form-item label="部门" name="region">
         <a-select v-model:value="formState.region" placeholder="please select your zone">
           <a-select-option value="shanghai">Zone one</a-select-option>
           <a-select-option value="beijing">Zone two</a-select-option>
@@ -49,12 +52,15 @@
       </a-form-item>
     </a-form>
   </template>
-  <script>
-  import { reactive, ref, toRaw } from 'vue';
+  <script setup>
+  //<script setup> 语法糖
+  import { reactive, ref, toRaw,defineEmits  } from 'vue';
   const formRef = ref();
   const labelCol = {
     span: 5,
   };
+ // const {emit}=useContext();
+ const emit = defineEmits(['formSubmit'])
   const wrapperCol = {
     span: 13,
   };
@@ -124,6 +130,10 @@
       .validate()
       .then(() => {
         console.log('values', formState, toRaw(formState));
+        
+         // 触发一个自定义事件 "formSubmit"
+        // 将 formState 作为事件参数
+        emit('formSubmit',toRaw(formState));
       })
       .catch(error => {
         console.log('error', error);
@@ -132,4 +142,6 @@
   const resetForm = () => {
     formRef.value.resetFields();
   };
+
+  
   </script>
